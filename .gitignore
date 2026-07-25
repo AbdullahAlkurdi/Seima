@@ -43,3 +43,20 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Secrets
+.env
+.env.local
+.env.production
+
+# Mindora model storage (downloaded GGUF models are large binaries, not source)
+mindora_models/
+
+# Model download artifacts
+*.gguf
+*.part
+llama-cli
+llama-cli.exe
+
+# Kilo tooling
+.kilo/

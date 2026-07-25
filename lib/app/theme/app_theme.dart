@@ -165,6 +165,14 @@ class ThemeController extends ValueNotifier<ThemeMode> {
   void light() => value = ThemeMode.light;
   void dark() => value = ThemeMode.dark;
   void system() => value = ThemeMode.system;
+
+  void toggle() {
+    if (value == ThemeMode.dark) {
+      value = ThemeMode.light;
+    } else {
+      value = ThemeMode.dark;
+    }
+  }
 }
 
 class MindoraTheme extends InheritedWidget {

@@ -1,0 +1,47 @@
+import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mindora/app/router/app_router.dart';
+import 'package:mindora/app/theme/app_theme.dart';
+import 'package:mindora/features/ai/data/ai_service.dart';
+import 'package:mindora/features/ai/data/llm_runtime.dart';
+import 'package:mindora/features/ai/data/llm_ai_service.dart';
+import 'package:mindora/features/ai/data/model_manager.dart';
+import 'package:mindora/features/ai/data/process_llm_runtime.dart';
+import 'package:mindora/features/ai/presentation/cubit/ai_cubit.dart';
+import 'package:mindora/features/mind/data/mind_repository.dart';
+import 'package:mindora/features/mind/presentation/cubit/mind_cubit.dart';
+import 'package:mindora/features/mind/presentation/cubit/mind_library_cubit.dart';
+import 'package:mindora/features/mind/presentation/cubit/search_cubit.dart';
+
+final sl = GetIt.instance;
+
+void initDependencies() {
+  sl.registerLazySingleton<ThemeController>(() => ThemeController());
+  sl.registerLazySingleton<GoRouter>(() => AppRouter.createRouter());
+  sl.registerLazySingleton<MindRepository>(() => MindRepository());
+
+  final llmRuntime = ProcessLLMRuntime();
+  final modelManager = ModelManager.default_;
+  final llmService = LLMAIService(llmRuntime: llmRuntime);
+
+  sl.registerLazySingleton<LocalLLMRuntime>(() => llmRuntime);
+  sl.registerLazySingleton<ModelManager>(() => modelManager);
+  sl.registerLazySingleton<AIService>(() => llmService);
+
+  sl.registerFactory<MindCubit>(
+    () => MindCubit(repository: sl<MindRepository>()),
+  );
+  sl.registerFactory<MindLibraryCubit>(
+    () => MindLibraryCubit(repository: sl<MindRepository>()),
+  );
+  sl.registerFactory<SearchCubit>(
+    () => SearchCubit(repository: sl<MindRepository>()),
+  );
+  sl.registerFactory<AICubit>(
+    () => AICubit(
+      aiService: sl<AIService>(),
+      llmRuntime: sl<LocalLLMRuntime>(),
+      modelManager: sl<ModelManager>(),
+    ),
+  );
+}
