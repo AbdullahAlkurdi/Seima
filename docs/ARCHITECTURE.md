@@ -125,6 +125,8 @@ lib/
 |---|---|
 | `lib/main.dart` | Entry point, DI bootstrap, app launch |
 | `lib/app/` | Application infrastructure (shell, config, router, theme, DI) |
+| `lib/app/startup/` | Startup screen with Mindora icon animation |
+| `lib/app/widgets/` | App-wide reusable widgets (MindoraLoadingView) |
 | `lib/core/` | Shared foundational types used across features |
 | `lib/features/` | Feature modules — each feature owns its presentation, domain, and data layers |
 | `test/` | Tests mirroring `lib/` structure |

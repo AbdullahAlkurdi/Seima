@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mindora/app/theme/spacing.dart';
+import 'package:mindora/app/widgets/mindora_loading_view.dart';
 import 'package:mindora/features/ai/domain/ai_failure.dart';
 import 'package:mindora/features/ai/domain/ai_proposal.dart';
 import 'package:mindora/features/ai/presentation/cubit/ai_cubit.dart';
@@ -197,7 +198,6 @@ class AIPanel extends StatelessWidget {
   }
 
   Widget _buildDownloadProgress(BuildContext context, AIState state) {
-    final cs = Theme.of(context).colorScheme;
     final progress = state.downloadProgress ?? 0.0;
     final percent = (progress * 100).toInt();
 
@@ -207,35 +207,29 @@ class AIPanel extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.downloading, size: 48, color: cs.primary),
+            MindoraLoadingView(
+              variant: MindoraLoadingVariant.compact,
+              progress: progress,
+            ),
             const SizedBox(height: AppSpacing.m),
             Text(
               'Downloading AI model...',
               style: Theme.of(context).textTheme.titleMedium,
             ),
-            const SizedBox(height: AppSpacing.m),
-            SizedBox(
-              width: 200,
-              child: Column(
-                children: [
-                  LinearProgressIndicator(value: progress),
-                  const SizedBox(height: AppSpacing.s),
-                  Text(
-                    '$percent%',
-                    style: Theme.of(
-                      context,
-                    ).textTheme.bodySmall?.copyWith(color: cs.onSurfaceVariant),
-                  ),
-                ],
+            const SizedBox(height: AppSpacing.s),
+            Text(
+              '$percent%',
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
               ),
             ),
             const SizedBox(height: AppSpacing.m),
             Text(
               'Model runs entirely on your device.\nNo data is sent to the cloud.',
               textAlign: TextAlign.center,
-              style: Theme.of(
-                context,
-              ).textTheme.bodySmall?.copyWith(color: cs.onSurfaceVariant),
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
+              ),
             ),
           ],
         ),
@@ -249,15 +243,11 @@ class AIPanel extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const CircularProgressIndicator(),
-          const SizedBox(height: AppSpacing.m),
-          Text(
-            state.isStreaming
+          MindoraLoadingView(
+            variant: MindoraLoadingVariant.compact,
+            message: state.isStreaming
                 ? 'Generating analysis...'
                 : 'Analyzing your mind map...',
-            style: Theme.of(
-              context,
-            ).textTheme.bodyMedium?.copyWith(color: cs.onSurfaceVariant),
           ),
           if (state.isStreaming && state.hasAnalysis) ...[
             const SizedBox(height: AppSpacing.m),

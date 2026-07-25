@@ -210,6 +210,27 @@ Defined in `AppSpacing` as a set of static constants.
 
 ---
 
+## Mindora Icon
+
+The Mindora brand icon (`assets/Mindora_Icon.png`) serves as the visual anchor:
+
+- **Source:** 1024×1024 RGBA PNG with transparency
+- **Usage:** App launcher icons on all platforms, native splash screen, Flutter startup animation, MindoraLoadingView component, AI panel loading states
+- **Treatment:** Always rendered at native resolution. Never distorted, recolored, or composited with gradients.
+
+## Startup & Loading
+
+The startup and loading experience uses the Mindora icon with subtle animation:
+
+- **StartupScreen:** Brief entry animation (scale 0.94→1.0, opacity fade) shown on app launch before transitioning to the main UI. Integrates via `MaterialApp.builder`.
+- **MindoraLoadingView:** Reusable component with three variants:
+  - `fullPage` — Scaffold wrapper for standalone loading screens
+  - `compact` — Inline loading for panels and embedded areas
+  - `overlay` — Semi-transparent overlay for modal loading
+- **Animation:** Gentle breathing pulse (0.94–1.0 scale, 2s cycle, easeInOut). Respects platform reduced-motion preferences via Flutter's animation framework.
+- **Progress:** Optional `LinearProgressIndicator` shown when `progress` parameter is provided (e.g., model download).
+- **Accessibility:** Semantics `liveRegion` for screen reader announcements of loading state.
+
 ## Do / Don't
 
 | Do | Don't |

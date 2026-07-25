@@ -254,6 +254,31 @@ The LLM architecture has three layers:
 
 ---
 
+## Platform Icons & Assets
+
+The Mindora icon (`assets/Mindora_Icon.png`) serves as the source for all platform icons.
+
+### Regenerating Platform Icons
+
+```bash
+python tools/generate_icons.py
+```
+
+This generates:
+- Android mipmap PNGs (all densities) + adaptive icon XML
+- iOS AppIcon.appiconset PNGs
+- macOS AppIcon.appiconset PNGs
+- Windows .ico (multi-resolution)
+- Splash icon (all densities)
+
+The generated files are checked into the platform-specific directories and referenced from native configuration (Android `AndroidManifest.xml`, iOS `Assets.xcassets`, Windows `Runner.rc`).
+
+### Native Splash
+- **Android:** `android/app/src/main/res/drawable/launch_background.xml` — centered Mindora icon on white background
+- **iOS:** `ios/Runner/Base.lproj/LaunchScreen.storyboard` — centered LaunchImage (Mindora icon)
+
+---
+
 ## Dependency Management
 
 ### Current Dependencies

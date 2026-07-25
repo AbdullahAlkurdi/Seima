@@ -1,13 +1,16 @@
 # Project Status
 
-> **Last updated:** 2026-07-25
+> **Last updated:** 2026-07-26
 
 ---
 
 ## Current Phase
 
-**Phase 7 — Advanced Knowledge Workspace + Production Hardening** (Complete)
-Canvas productivity improved with node types (text/task/question/idea), curved bezier connections, connection selection, and JSON import/export. Comprehensive production-readiness hardening audit completed: undo/redo drag isolation, fromJson safety for unknown/missing node types, import connection validation, debounced autosave lifecycle guard, generateId collision reduction, dead code removal, AICubit service layer fix, model download integrity (temp file + size verification), bidirectional duplicate connection check, AI content/tag length limits, and privacy/security audits. 219 tests pass, 0 analyzer issues.
+**Phase 8B — Data & Reliability** (Complete)
+Local persistence hardened with atomic backup-and-write, stale-write detection via sequenceNumber, and corrupted storage auto-recovery. Versioned storage schema with forward-compatible JSON parsing. Undo/redo preserved. AI proposal validation hardened. LLM runtime: concurrent generation guard, 120s timeout, process cleanup. Model download: integrity check, orphan cleanup, empty-file rejection. Autosave: sequenceNumber stale-write protection. Error recovery: Failure caught in importMind. 258 tests pass, 0 analyzer issues.
+
+**Phase 8C — Visual Identity & Loading Experience** (Complete)
+Official Mindora icon integrated across all platforms. App launcher icons for Android, iOS, Windows, and macOS. Native splash screens (Android launch_background.xml, iOS LaunchScreen.storyboard) with centered Mindora icon. Flutter startup animation (StartupScreen) with scale/opacity transition from icon to main UI. Reusable MindoraLoadingView component with three variants (fullPage, compact, overlay), pulse animation, optional progress indicator, and liveRegion semantics. AI panel loading states updated to use MindoraLoadingView. ColorScheme and theme tokens for light/dark mode. 268 tests pass, 0 analyzer issues.
 
 ---
 
