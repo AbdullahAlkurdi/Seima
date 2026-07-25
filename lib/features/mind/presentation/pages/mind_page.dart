@@ -4,20 +4,20 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mindora/app/config/app_config.dart';
-import 'package:mindora/app/theme/app_theme.dart';
-import 'package:mindora/app/theme/spacing.dart';
-import 'package:mindora/features/ai/data/mind_context_builder.dart';
-import 'package:mindora/features/ai/domain/ai_proposal.dart';
-import 'package:mindora/features/ai/presentation/cubit/ai_cubit.dart';
-import 'package:mindora/features/ai/presentation/cubit/ai_state.dart';
-import 'package:mindora/features/ai/presentation/widgets/ai_panel.dart';
-import 'package:mindora/features/mind/domain/mind.dart';
-import 'package:mindora/features/mind/presentation/cubit/mind_cubit.dart';
-import 'package:mindora/features/mind/presentation/cubit/mind_state.dart';
-import 'package:mindora/features/mind/presentation/widgets/mind_canvas.dart';
-import 'package:mindora/features/mind/presentation/widgets/node_editor.dart';
-import 'package:mindora/features/mind/presentation/widgets/shortcut_registry.dart';
+import 'package:seima/app/config/app_config.dart';
+import 'package:seima/app/theme/app_theme.dart';
+import 'package:seima/app/theme/spacing.dart';
+import 'package:seima/features/ai/data/mind_context_builder.dart';
+import 'package:seima/features/ai/domain/ai_proposal.dart';
+import 'package:seima/features/ai/presentation/cubit/ai_cubit.dart';
+import 'package:seima/features/ai/presentation/cubit/ai_state.dart';
+import 'package:seima/features/ai/presentation/widgets/ai_panel.dart';
+import 'package:seima/features/mind/domain/mind.dart';
+import 'package:seima/features/mind/presentation/cubit/mind_cubit.dart';
+import 'package:seima/features/mind/presentation/cubit/mind_state.dart';
+import 'package:seima/features/mind/presentation/widgets/mind_canvas.dart';
+import 'package:seima/features/mind/presentation/widgets/node_editor.dart';
+import 'package:seima/features/mind/presentation/widgets/shortcut_registry.dart';
 
 class MindPage extends StatelessWidget {
   final String? mindId;
@@ -484,7 +484,7 @@ class _MindAppBar extends StatelessWidget implements PreferredSizeWidget {
               icon: const Icon(Icons.light_mode_outlined),
               tooltip: 'Toggle theme',
               onPressed: () {
-                MindoraTheme.of(context).toggle();
+                SeimaTheme.of(context).toggle();
               },
             ),
           ],

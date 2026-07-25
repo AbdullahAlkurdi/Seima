@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mindora/core/errors/app_exception.dart';
-import 'package:mindora/core/errors/failures.dart';
+import 'package:seima/core/errors/app_exception.dart';
+import 'package:seima/core/errors/failures.dart';
 
 void main() {
   group('Failure', () {

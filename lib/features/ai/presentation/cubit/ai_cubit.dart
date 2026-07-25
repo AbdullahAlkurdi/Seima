@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mindora/features/ai/data/ai_service.dart';
-import 'package:mindora/features/ai/data/llm_runtime.dart';
-import 'package:mindora/features/ai/data/model_manager.dart';
-import 'package:mindora/features/ai/data/mind_context_builder.dart';
-import 'package:mindora/features/ai/domain/ai_config.dart';
-import 'package:mindora/features/ai/domain/ai_context.dart';
-import 'package:mindora/features/ai/domain/ai_failure.dart';
-import 'package:mindora/features/ai/presentation/cubit/ai_state.dart';
+import 'package:seima/features/ai/data/ai_service.dart';
+import 'package:seima/features/ai/data/llm_runtime.dart';
+import 'package:seima/features/ai/data/model_manager.dart';
+import 'package:seima/features/ai/data/mind_context_builder.dart';
+import 'package:seima/features/ai/domain/ai_config.dart';
+import 'package:seima/features/ai/domain/ai_context.dart';
+import 'package:seima/features/ai/domain/ai_failure.dart';
+import 'package:seima/features/ai/presentation/cubit/ai_state.dart';
 
 class AICubit extends Cubit<AIState> {
   final AIService aiService;

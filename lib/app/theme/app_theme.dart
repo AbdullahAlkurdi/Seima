@@ -175,10 +175,10 @@ class ThemeController extends ValueNotifier<ThemeMode> {
   }
 }
 
-class MindoraTheme extends InheritedWidget {
+class SeimaTheme extends InheritedWidget {
   final ThemeController controller;
 
-  const MindoraTheme({
+  const SeimaTheme({
     super.key,
     required this.controller,
     required super.child,
@@ -186,10 +186,10 @@ class MindoraTheme extends InheritedWidget {
 
   static ThemeController of(BuildContext context) {
     return context
-        .dependOnInheritedWidgetOfExactType<MindoraTheme>()!
+        .dependOnInheritedWidgetOfExactType<SeimaTheme>()!
         .controller;
   }
 
   @override
-  bool updateShouldNotify(MindoraTheme old) => controller != old.controller;
+  bool updateShouldNotify(SeimaTheme old) => controller != old.controller;
 }

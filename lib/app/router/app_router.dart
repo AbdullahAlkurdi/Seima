@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mindora/features/mind/presentation/pages/mind_library_page.dart';
-import 'package:mindora/features/mind/presentation/pages/mind_page.dart';
-import 'package:mindora/features/mind/presentation/pages/search_page.dart';
+import 'package:seima/features/mind/presentation/pages/mind_library_page.dart';
+import 'package:seima/features/mind/presentation/pages/mind_page.dart';
+import 'package:seima/features/mind/presentation/pages/search_page.dart';
 
 class AppRouter {
   static GoRouter createRouter() {

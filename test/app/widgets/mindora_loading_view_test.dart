@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mindora/app/widgets/mindora_loading_view.dart';
+import 'package:seima/app/widgets/mindora_loading_view.dart';
 
 void main() {
-  group('MindoraLoadingView', () {
+  group('SeimaLoadingView', () {
     testWidgets('renders icon and message', (tester) async {
       await tester.pumpWidget(
-        MaterialApp(home: MindoraLoadingView(message: 'Loading minds...')),
+        MaterialApp(home: SeimaLoadingView(message: 'Loading minds...')),
       );
       await tester.pump();
 
-      expect(find.byType(MindoraLoadingView), findsOneWidget);
+      expect(find.byType(SeimaLoadingView), findsOneWidget);
       expect(find.text('Loading minds...'), findsOneWidget);
     });
 
@@ -20,18 +20,18 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            body: MindoraLoadingView(variant: MindoraLoadingVariant.compact),
+            body: SeimaLoadingView(variant: SeimaLoadingVariant.compact),
           ),
         ),
       );
       await tester.pump();
 
-      expect(find.byType(MindoraLoadingView), findsOneWidget);
+      expect(find.byType(SeimaLoadingView), findsOneWidget);
     });
 
     testWidgets('renders with progress indicator', (tester) async {
       await tester.pumpWidget(
-        MaterialApp(home: MindoraLoadingView(progress: 0.5)),
+        MaterialApp(home: SeimaLoadingView(progress: 0.5)),
       );
       await tester.pump();
 
@@ -42,24 +42,24 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            body: MindoraLoadingView(variant: MindoraLoadingVariant.overlay),
+            body: SeimaLoadingView(variant: SeimaLoadingVariant.overlay),
           ),
         ),
       );
       await tester.pump();
 
-      expect(find.byType(MindoraLoadingView), findsOneWidget);
+      expect(find.byType(SeimaLoadingView), findsOneWidget);
     });
 
     testWidgets('icon asset renders', (tester) async {
-      await tester.pumpWidget(MaterialApp(home: MindoraLoadingView()));
+      await tester.pumpWidget(MaterialApp(home: SeimaLoadingView()));
       await tester.pump();
 
       expect(find.byType(Image), findsOneWidget);
     });
 
     testWidgets('default variant is fullPage with Scaffold', (tester) async {
-      await tester.pumpWidget(MaterialApp(home: MindoraLoadingView()));
+      await tester.pumpWidget(MaterialApp(home: SeimaLoadingView()));
       await tester.pump();
 
       expect(find.byType(Scaffold), findsOneWidget);

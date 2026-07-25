@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mindora/core/errors/failures.dart';
-import 'package:mindora/features/mind/data/mind_repository.dart';
+import 'package:seima/core/errors/failures.dart';
+import 'package:seima/features/mind/data/mind_repository.dart';
 import 'search_state.dart';
 
 class SearchCubit extends Cubit<SearchState> {

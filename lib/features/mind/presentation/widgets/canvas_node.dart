@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mindora/app/theme/spacing.dart';
-import 'package:mindora/features/mind/domain/mind_node.dart';
-import 'package:mindora/features/mind/domain/node_type.dart';
+import 'package:seima/app/theme/spacing.dart';
+import 'package:seima/features/mind/domain/mind_node.dart';
+import 'package:seima/features/mind/domain/node_type.dart';
 
 class CanvasNodeWidget extends StatelessWidget {
   final MindNode node;

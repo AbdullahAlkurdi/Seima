@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:bloc_test/bloc_test.dart';
-import 'package:mindora/app/config/app_config.dart';
-import 'package:mindora/features/home/presentation/cubit/home_cubit.dart';
+import 'package:seima/app/config/app_config.dart';
+import 'package:seima/features/home/presentation/cubit/home_cubit.dart';
 
 void main() {
   group('HomeCubit', () {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mindora/app/startup/startup_screen.dart';
+import 'package:seima/app/startup/startup_screen.dart';
 
 void main() {
   group('StartupScreen', () {

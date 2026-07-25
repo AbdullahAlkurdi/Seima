@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mindora/features/mind/domain/node_type.dart';
+import 'package:seima/features/mind/domain/node_type.dart';
 
 void main() {
   group('NodeType', () {

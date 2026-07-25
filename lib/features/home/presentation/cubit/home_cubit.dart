@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mindora/app/config/app_config.dart';
+import 'package:seima/app/config/app_config.dart';
 
 part 'home_state.dart';
 

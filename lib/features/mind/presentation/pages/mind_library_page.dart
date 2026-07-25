@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mindora/app/config/app_config.dart';
-import 'package:mindora/app/theme/app_theme.dart';
-import 'package:mindora/app/theme/spacing.dart';
-import 'package:mindora/features/mind/presentation/cubit/mind_library_cubit.dart';
-import 'package:mindora/features/mind/presentation/cubit/mind_library_state.dart';
+import 'package:seima/app/config/app_config.dart';
+import 'package:seima/app/theme/app_theme.dart';
+import 'package:seima/app/theme/spacing.dart';
+import 'package:seima/features/mind/presentation/cubit/mind_library_cubit.dart';
+import 'package:seima/features/mind/presentation/cubit/mind_library_state.dart';
 
 class MindLibraryPage extends StatefulWidget {
   const MindLibraryPage({super.key});
@@ -100,6 +100,33 @@ class _MindLibraryPageState extends State<MindLibraryPage> {
 
   @override
   Widget build(BuildContext context) {
+    return BlocProvider<MindLibraryCubit>.value(
+      value: _cubit,
+      child: _MindLibraryBody(
+        onOpenMind: _openMind,
+        onCreateMind: _createMind,
+        onRenameMind: _renameMind,
+        onDeleteMind: _deleteMind,
+      ),
+    );
+  }
+}
+
+class _MindLibraryBody extends StatelessWidget {
+  final void Function(String id) onOpenMind;
+  final VoidCallback onCreateMind;
+  final void Function(String id, String currentTitle) onRenameMind;
+  final void Function(String id, String title) onDeleteMind;
+
+  const _MindLibraryBody({
+    required this.onOpenMind,
+    required this.onCreateMind,
+    required this.onRenameMind,
+    required this.onDeleteMind,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(
@@ -115,7 +142,7 @@ class _MindLibraryPageState extends State<MindLibraryPage> {
             icon: const Icon(Icons.light_mode_outlined),
             tooltip: 'Toggle theme',
             onPressed: () {
-              final c = MindoraTheme.of(context);
+              final c = SeimaTheme.of(context);
               c.toggle();
             },
           ),
@@ -136,7 +163,7 @@ class _MindLibraryPageState extends State<MindLibraryPage> {
                   Text(state.error!.message),
                   const SizedBox(height: AppSpacing.l),
                   FilledButton(
-                    onPressed: () => _cubit.loadAll(),
+                    onPressed: () => context.read<MindLibraryCubit>().loadAll(),
                     child: const Text('Retry'),
                   ),
                 ],
@@ -144,20 +171,20 @@ class _MindLibraryPageState extends State<MindLibraryPage> {
             );
           }
           if (state.minds.isEmpty) {
-            return _buildEmptyState(cs);
+            return _buildEmptyState(context, cs);
           }
-          return _buildMindList(state);
+          return _buildMindList(context, state);
         },
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: _createMind,
+        onPressed: onCreateMind,
         icon: const Icon(Icons.add),
         label: const Text('New Mind'),
       ),
     );
   }
 
-  Widget _buildEmptyState(ColorScheme cs) {
+  Widget _buildEmptyState(BuildContext context, ColorScheme cs) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -169,7 +196,7 @@ class _MindLibraryPageState extends State<MindLibraryPage> {
           ),
           const SizedBox(height: AppSpacing.l),
           Text(
-            'Welcome to Mindora',
+            'Welcome to Seima',
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           const SizedBox(height: AppSpacing.s),
@@ -181,7 +208,7 @@ class _MindLibraryPageState extends State<MindLibraryPage> {
           ),
           const SizedBox(height: AppSpacing.xl),
           FilledButton.icon(
-            onPressed: _createMind,
+            onPressed: onCreateMind,
             icon: const Icon(Icons.add),
             label: const Text('Create Your First Mind'),
           ),
@@ -190,9 +217,9 @@ class _MindLibraryPageState extends State<MindLibraryPage> {
     );
   }
 
-  Widget _buildMindList(MindLibraryState state) {
+  Widget _buildMindList(BuildContext context, MindLibraryState state) {
     return RefreshIndicator(
-      onRefresh: () => _cubit.loadAll(),
+      onRefresh: () => context.read<MindLibraryCubit>().loadAll(),
       child: ListView.separated(
         padding: const EdgeInsets.all(AppSpacing.m),
         itemCount: state.minds.length,
@@ -201,10 +228,11 @@ class _MindLibraryPageState extends State<MindLibraryPage> {
           final mind = state.minds[index];
           return _MindCard(
             mind: mind,
-            onTap: () => _openMind(mind.id),
-            onRename: () => _renameMind(mind.id, mind.title),
-            onDuplicate: () => _cubit.duplicate(mind.id),
-            onDelete: () => _deleteMind(mind.id, mind.title),
+            onTap: () => onOpenMind(mind.id),
+            onRename: () => onRenameMind(mind.id, mind.title),
+            onDuplicate: () =>
+                context.read<MindLibraryCubit>().duplicate(mind.id),
+            onDelete: () => onDeleteMind(mind.id, mind.title),
           );
         },
       ),
@@ -271,7 +299,7 @@ class _MindCard extends StatelessWidget {
                     ),
                     const SizedBox(height: AppSpacing.xs),
                     Text(
-                      '$nodeCount nodes · $connCount connections · $lastAccessed',
+                      '$nodeCount nodes Â· $connCount connections Â· $lastAccessed',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: cs.onSurfaceVariant,
                       ),

@@ -1,10 +1,10 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mindora/features/mind/domain/mind.dart';
-import 'package:mindora/features/mind/domain/mind_node.dart';
-import 'package:mindora/features/mind/presentation/widgets/canvas_node.dart';
-import 'package:mindora/features/mind/presentation/widgets/connection_painter.dart';
+import 'package:seima/features/mind/domain/mind.dart';
+import 'package:seima/features/mind/domain/mind_node.dart';
+import 'package:seima/features/mind/presentation/widgets/canvas_node.dart';
+import 'package:seima/features/mind/presentation/widgets/connection_painter.dart';
 
 class MindCanvas extends StatefulWidget {
   final Mind mind;

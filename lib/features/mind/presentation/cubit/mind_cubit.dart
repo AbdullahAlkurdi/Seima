@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mindora/core/errors/failures.dart';
-import 'package:mindora/features/mind/data/id_provider.dart';
-import 'package:mindora/features/mind/data/mind_repository.dart';
-import 'package:mindora/features/mind/domain/mind.dart';
-import 'package:mindora/features/mind/domain/mind_connection.dart';
-import 'package:mindora/features/mind/domain/mind_node.dart';
-import 'package:mindora/features/mind/domain/node_type.dart';
+import 'package:seima/core/errors/failures.dart';
+import 'package:seima/features/mind/data/id_provider.dart';
+import 'package:seima/features/mind/data/mind_repository.dart';
+import 'package:seima/features/mind/domain/mind.dart';
+import 'package:seima/features/mind/domain/mind_connection.dart';
+import 'package:seima/features/mind/domain/mind_node.dart';
+import 'package:seima/features/mind/domain/node_type.dart';
 import 'mind_state.dart';
 
 class MindCubit extends Cubit<MindState> {

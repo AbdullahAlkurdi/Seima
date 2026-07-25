@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mindora/app/config/app_config.dart';
-import 'package:mindora/app/startup/startup_screen.dart';
-import 'package:mindora/app/theme/app_theme.dart';
+import 'package:seima/app/config/app_config.dart';
+import 'package:seima/app/startup/startup_screen.dart';
+import 'package:seima/app/theme/app_theme.dart';
 
-class MindoraApp extends StatelessWidget {
-  const MindoraApp({super.key});
+class SeimaApp extends StatelessWidget {
+  const SeimaApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     final controller = GetIt.instance<ThemeController>();
-    return MindoraTheme(
+    return SeimaTheme(
       controller: controller,
       child: ValueListenableBuilder<ThemeMode>(
         valueListenable: controller,

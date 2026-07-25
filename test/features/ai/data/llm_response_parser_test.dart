@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mindora/features/ai/data/llm_response_parser.dart';
-import 'package:mindora/features/ai/domain/ai_proposal.dart';
+import 'package:seima/features/ai/data/llm_response_parser.dart';
+import 'package:seima/features/ai/domain/ai_proposal.dart';
 
 void main() {
   group('LLMResponseParser', () {

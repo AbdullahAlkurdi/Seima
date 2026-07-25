@@ -1,6 +1,6 @@
-import 'package:mindora/features/ai/domain/ai_config.dart';
-import 'package:mindora/features/ai/domain/ai_failure.dart';
-import 'package:mindora/features/ai/domain/ai_proposal.dart';
+import 'package:seima/features/ai/domain/ai_config.dart';
+import 'package:seima/features/ai/domain/ai_failure.dart';
+import 'package:seima/features/ai/domain/ai_proposal.dart';
 
 enum AIStatus { initial, loading, streaming, success, failure }
 

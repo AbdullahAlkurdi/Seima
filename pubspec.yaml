@@ -1,4 +1,4 @@
-name: mindora
+name: seima
 description: "A mind-mapping application integrated with an AI assistant."
 publish_to: 'none'
 version: 1.0.0+1
@@ -25,4 +25,4 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/Mindora_Icon.png
+    - assets/Seima_Icon.png

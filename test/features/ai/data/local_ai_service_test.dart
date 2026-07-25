@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mindora/features/ai/data/local_ai_service.dart';
-import 'package:mindora/features/ai/domain/ai_config.dart';
-import 'package:mindora/features/ai/domain/ai_context.dart';
-import 'package:mindora/features/ai/domain/ai_proposal.dart';
+import 'package:seima/features/ai/data/local_ai_service.dart';
+import 'package:seima/features/ai/domain/ai_config.dart';
+import 'package:seima/features/ai/domain/ai_context.dart';
+import 'package:seima/features/ai/domain/ai_proposal.dart';
 
 void main() {
   group('LocalAIService', () {

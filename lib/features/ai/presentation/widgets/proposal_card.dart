@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mindora/app/theme/spacing.dart';
-import 'package:mindora/features/ai/domain/ai_proposal.dart';
+import 'package:seima/app/theme/spacing.dart';
+import 'package:seima/features/ai/domain/ai_proposal.dart';
 
 class ProposalCard extends StatelessWidget {
   final AIProposal proposal;
@@ -121,7 +121,7 @@ class ProposalCard extends StatelessWidget {
             ),
             const SizedBox(height: AppSpacing.s),
             Text(
-              '${p.sourceNodeId} → ${p.targetNodeId}',
+              '${p.sourceNodeId} â†’ ${p.targetNodeId}',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 fontFamily: 'monospace',
                 fontSize: 12,

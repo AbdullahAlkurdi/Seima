@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mindora/features/ai/data/llm_runtime.dart';
-import 'package:mindora/features/ai/data/process_llm_runtime.dart';
+import 'package:seima/features/ai/data/llm_runtime.dart';
+import 'package:seima/features/ai/data/process_llm_runtime.dart';
 
 void main() {
   group('ProcessLLMRuntime', () {

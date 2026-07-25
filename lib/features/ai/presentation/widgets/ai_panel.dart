@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mindora/app/theme/spacing.dart';
-import 'package:mindora/app/widgets/mindora_loading_view.dart';
-import 'package:mindora/features/ai/domain/ai_failure.dart';
-import 'package:mindora/features/ai/domain/ai_proposal.dart';
-import 'package:mindora/features/ai/presentation/cubit/ai_cubit.dart';
-import 'package:mindora/features/ai/presentation/cubit/ai_state.dart';
-import 'package:mindora/features/ai/presentation/widgets/proposal_card.dart';
+import 'package:seima/app/theme/spacing.dart';
+import 'package:seima/app/widgets/mindora_loading_view.dart';
+import 'package:seima/features/ai/domain/ai_failure.dart';
+import 'package:seima/features/ai/domain/ai_proposal.dart';
+import 'package:seima/features/ai/presentation/cubit/ai_cubit.dart';
+import 'package:seima/features/ai/presentation/cubit/ai_state.dart';
+import 'package:seima/features/ai/presentation/widgets/proposal_card.dart';
 
 class AIPanel extends StatelessWidget {
   final VoidCallback? onApplyNewNode;
@@ -207,8 +207,8 @@ class AIPanel extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            MindoraLoadingView(
-              variant: MindoraLoadingVariant.compact,
+            SeimaLoadingView(
+              variant: SeimaLoadingVariant.compact,
               progress: progress,
             ),
             const SizedBox(height: AppSpacing.m),
@@ -243,8 +243,8 @@ class AIPanel extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          MindoraLoadingView(
-            variant: MindoraLoadingVariant.compact,
+          SeimaLoadingView(
+            variant: SeimaLoadingVariant.compact,
             message: state.isStreaming
                 ? 'Generating analysis...'
                 : 'Analyzing your mind map...',

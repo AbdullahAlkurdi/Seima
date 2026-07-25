@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mindora/core/errors/failures.dart';
-import 'package:mindora/features/mind/data/id_provider.dart';
-import 'package:mindora/features/mind/data/mind_repository.dart';
-import 'package:mindora/features/mind/domain/mind.dart';
+import 'package:seima/core/errors/failures.dart';
+import 'package:seima/features/mind/data/id_provider.dart';
+import 'package:seima/features/mind/data/mind_repository.dart';
+import 'package:seima/features/mind/domain/mind.dart';
 import 'mind_library_state.dart';
 
 class MindLibraryCubit extends Cubit<MindLibraryState> {

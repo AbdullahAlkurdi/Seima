@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mindora/features/ai/domain/ai_context.dart';
+import 'package:seima/features/ai/domain/ai_context.dart';
 
 void main() {
   group('AIContext', () {

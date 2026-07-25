@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mindora/app/config/app_config.dart';
-import 'package:mindora/app/theme/app_theme.dart';
-import 'package:mindora/features/home/presentation/cubit/home_cubit.dart';
-import 'package:mindora/features/home/presentation/pages/home_page.dart';
+import 'package:seima/app/config/app_config.dart';
+import 'package:seima/app/theme/app_theme.dart';
+import 'package:seima/features/home/presentation/cubit/home_cubit.dart';
+import 'package:seima/features/home/presentation/pages/home_page.dart';
 
 void main() {
   setUp(() {

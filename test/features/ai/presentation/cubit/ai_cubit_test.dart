@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:bloc_test/bloc_test.dart';
-import 'package:mindora/features/ai/data/ai_service.dart';
-import 'package:mindora/features/ai/domain/ai_config.dart';
-import 'package:mindora/features/ai/domain/ai_context.dart';
-import 'package:mindora/features/ai/domain/ai_proposal.dart';
-import 'package:mindora/features/ai/domain/ai_response.dart';
-import 'package:mindora/features/ai/presentation/cubit/ai_cubit.dart';
-import 'package:mindora/features/ai/presentation/cubit/ai_state.dart';
+import 'package:seima/features/ai/data/ai_service.dart';
+import 'package:seima/features/ai/domain/ai_config.dart';
+import 'package:seima/features/ai/domain/ai_context.dart';
+import 'package:seima/features/ai/domain/ai_proposal.dart';
+import 'package:seima/features/ai/domain/ai_response.dart';
+import 'package:seima/features/ai/presentation/cubit/ai_cubit.dart';
+import 'package:seima/features/ai/presentation/cubit/ai_state.dart';
 
 class _MockAIService implements AIService {
   final bool shouldFail;

@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'package:mindora/features/ai/data/ai_service.dart';
-import 'package:mindora/features/ai/domain/ai_config.dart';
-import 'package:mindora/features/ai/domain/ai_context.dart';
-import 'package:mindora/features/ai/domain/ai_proposal.dart';
-import 'package:mindora/features/ai/domain/ai_response.dart';
+import 'package:seima/features/ai/data/ai_service.dart';
+import 'package:seima/features/ai/domain/ai_config.dart';
+import 'package:seima/features/ai/domain/ai_context.dart';
+import 'package:seima/features/ai/domain/ai_proposal.dart';
+import 'package:seima/features/ai/domain/ai_response.dart';
 
 class LocalAIService implements AIService {
   const LocalAIService();

@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:mindora/features/ai/domain/ai_proposal.dart';
-import 'package:mindora/features/ai/domain/ai_response.dart';
+import 'package:seima/features/ai/domain/ai_proposal.dart';
+import 'package:seima/features/ai/domain/ai_response.dart';
 
 class LLMResponseParser {
   static const maxContentLength = 2000;

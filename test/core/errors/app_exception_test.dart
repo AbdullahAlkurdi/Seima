@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mindora/core/errors/app_exception.dart';
+import 'package:seima/core/errors/app_exception.dart';
 
 void main() {
   group('AppException', () {

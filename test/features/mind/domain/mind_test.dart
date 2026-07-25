@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mindora/features/mind/domain/mind.dart';
-import 'package:mindora/features/mind/domain/mind_node.dart';
-import 'package:mindora/features/mind/domain/mind_connection.dart';
+import 'package:seima/features/mind/domain/mind.dart';
+import 'package:seima/features/mind/domain/mind_node.dart';
+import 'package:seima/features/mind/domain/mind_connection.dart';
 
 void main() {
   group('Mind', () {

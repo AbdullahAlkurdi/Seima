@@ -1,4 +1,4 @@
-import 'package:mindora/core/errors/app_exception.dart';
+import 'package:seima/core/errors/app_exception.dart';
 
 class AIFailure {
   const AIFailure({required this.message, this.exception});

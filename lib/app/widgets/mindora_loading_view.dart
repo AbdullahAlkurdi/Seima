@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:mindora/app/theme/spacing.dart';
+import 'package:seima/app/theme/spacing.dart';
 
-enum MindoraLoadingVariant { fullPage, compact, overlay }
+enum SeimaLoadingVariant { fullPage, compact, overlay }
 
-class MindoraLoadingView extends StatefulWidget {
-  final MindoraLoadingVariant variant;
+class SeimaLoadingView extends StatefulWidget {
+  final SeimaLoadingVariant variant;
   final String? message;
   final double? progress;
 
-  const MindoraLoadingView({
+  const SeimaLoadingView({
     super.key,
-    this.variant = MindoraLoadingVariant.fullPage,
+    this.variant = SeimaLoadingVariant.fullPage,
     this.message,
     this.progress,
   });
 
   @override
-  State<MindoraLoadingView> createState() => _MindoraLoadingViewState();
+  State<SeimaLoadingView> createState() => _SeimaLoadingViewState();
 }
 
-class _MindoraLoadingViewState extends State<MindoraLoadingView>
+class _SeimaLoadingViewState extends State<SeimaLoadingView>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _pulse;
@@ -48,14 +48,14 @@ class _MindoraLoadingViewState extends State<MindoraLoadingView>
     final cs = Theme.of(context).colorScheme;
 
     switch (widget.variant) {
-      case MindoraLoadingVariant.fullPage:
+      case SeimaLoadingVariant.fullPage:
         return Scaffold(
           backgroundColor: cs.surface,
           body: Center(child: _buildContent(context, cs)),
         );
-      case MindoraLoadingVariant.compact:
+      case SeimaLoadingVariant.compact:
         return _buildContent(context, cs);
-      case MindoraLoadingVariant.overlay:
+      case SeimaLoadingVariant.overlay:
         return Container(
           color: cs.surface.withValues(alpha: 0.85),
           child: Center(child: _buildContent(context, cs)),
@@ -64,7 +64,7 @@ class _MindoraLoadingViewState extends State<MindoraLoadingView>
   }
 
   Widget _buildContent(BuildContext context, ColorScheme cs) {
-    final isCompact = widget.variant == MindoraLoadingVariant.compact;
+    final isCompact = widget.variant == SeimaLoadingVariant.compact;
     final iconSize = isCompact ? 48.0 : 80.0;
 
     return Semantics(
@@ -78,7 +78,7 @@ class _MindoraLoadingViewState extends State<MindoraLoadingView>
             builder: (context, child) =>
                 Transform.scale(scale: _pulse.value, child: child),
             child: Image.asset(
-              'assets/Mindora_Icon.png',
+              'assets/Seima_Icon.png',
               width: iconSize,
               height: iconSize,
               fit: BoxFit.contain,

@@ -1,5 +1,5 @@
-import 'package:mindora/features/ai/domain/ai_context.dart';
-import 'package:mindora/features/mind/domain/mind.dart';
+import 'package:seima/features/ai/domain/ai_context.dart';
+import 'package:seima/features/mind/domain/mind.dart';
 
 class MindContextBuilder {
   final int maxNodes;
@@ -81,7 +81,7 @@ class MindContextBuilder {
     } else {
       buffer.writeln('Connections:');
       for (final conn in context.connections) {
-        buffer.writeln('- ${conn.sourceNodeId} → ${conn.targetNodeId}');
+        buffer.writeln('- ${conn.sourceNodeId} â†’ ${conn.targetNodeId}');
       }
     }
 

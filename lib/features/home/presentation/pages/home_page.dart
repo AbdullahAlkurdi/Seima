@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mindora/app/config/app_config.dart';
-import 'package:mindora/app/theme/app_theme.dart';
-import 'package:mindora/app/theme/spacing.dart';
-import 'package:mindora/features/home/presentation/cubit/home_cubit.dart';
+import 'package:seima/app/config/app_config.dart';
+import 'package:seima/app/theme/app_theme.dart';
+import 'package:seima/app/theme/spacing.dart';
+import 'package:seima/features/home/presentation/cubit/home_cubit.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -35,7 +35,7 @@ class _HomeBody extends StatelessWidget {
             icon: const Icon(Icons.light_mode_outlined),
             tooltip: 'Toggle theme',
             onPressed: () {
-              final c = MindoraTheme.of(context);
+              final c = SeimaTheme.of(context);
               if (c.value == ThemeMode.dark) {
                 c.system();
               } else {
@@ -76,7 +76,7 @@ class _HomeBody extends StatelessWidget {
                   const SizedBox(height: AppSpacing.xxl),
                   FilledButton.icon(
                     onPressed: () {
-                      final c = MindoraTheme.of(context);
+                      final c = SeimaTheme.of(context);
                       switch (c.value) {
                         case ThemeMode.light:
                           c.dark();

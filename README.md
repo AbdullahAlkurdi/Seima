@@ -1,8 +1,8 @@
-# Mindora
+﻿# Seima
 
 A mind-mapping application integrated with an AI assistant for organizing ideas, tracking project progress, and visualizing complex thoughts.
 
-**Status:** Phase 7 — Canvas Productivity + Production Readiness Hardening. Multi-node selection, node types (text/task/question/idea), curved connections, connection selection, import/export, drag undo grouping, debounced autosave, viewport culling, and 100% on-device AI with optional LLM.
+**Status:** Phase 7 â€” Canvas Productivity + Production Readiness Hardening. Multi-node selection, node types (text/task/question/idea), curved connections, connection selection, import/export, drag undo grouping, debounced autosave, viewport culling, and 100% on-device AI with optional LLM.
 
 ---
 
@@ -33,31 +33,31 @@ See [docs/PRODUCT_VISION.md](docs/PRODUCT_VISION.md) for the full vision.
 
 ```
 lib/
-├── main.dart              # Entry point
-├── app/                   # Application infrastructure
-│   ├── app.dart           # MindoraApp widget
-│   ├── di.dart            # Dependency injection setup
-│   ├── config/            # App configuration
-│   ├── router/            # Route definitions
-│   └── theme/             # Centralized design system
-├── core/                  # Shared foundations
-│   └── errors/            # AppException, Failure types
-└── features/              # Feature modules
-    ├── home/              # Home screen (placeholder)
-    │   └── presentation/
-    │       ├── cubit/
-    │       └── pages/
-    └── mind/              # Mind workspace + library (Phase 2/3/4/7)
-        ├── data/          # MindRepository (versioned), ID provider
-        ├── domain/        # Mind, MindNode, MindConnection, NodeType
-        └── presentation/  # MindCubit, MindLibraryCubit, SearchCubit
+â”œâ”€â”€ main.dart              # Entry point
+â”œâ”€â”€ app/                   # Application infrastructure
+â”‚   â”œâ”€â”€ app.dart           # MindoraApp widget
+â”‚   â”œâ”€â”€ di.dart            # Dependency injection setup
+â”‚   â”œâ”€â”€ config/            # App configuration
+â”‚   â”œâ”€â”€ router/            # Route definitions
+â”‚   â””â”€â”€ theme/             # Centralized design system
+â”œâ”€â”€ core/                  # Shared foundations
+â”‚   â””â”€â”€ errors/            # AppException, Failure types
+â””â”€â”€ features/              # Feature modules
+    â”œâ”€â”€ home/              # Home screen (placeholder)
+    â”‚   â””â”€â”€ presentation/
+    â”‚       â”œâ”€â”€ cubit/
+    â”‚       â””â”€â”€ pages/
+    â””â”€â”€ mind/              # Mind workspace + library (Phase 2/3/4/7)
+        â”œâ”€â”€ data/          # MindRepository (versioned), ID provider
+        â”œâ”€â”€ domain/        # Mind, MindNode, MindConnection, NodeType
+        â””â”€â”€ presentation/  # MindCubit, MindLibraryCubit, SearchCubit
                            # Pages: library, workspace, search
                            # Widgets: canvas, node, connection painter, editor
-    └── ai/                # AI knowledge intelligence (Phase 5/6)
-        ├── data/          # AIService, LLMAIService, LocalAIService
-        │                  # LLM runtime, model manager, response parser
-        ├── domain/        # AI config, context, proposals, response
-        └── presentation/  # AICubit, AI panel, proposal cards
+    â””â”€â”€ ai/                # AI knowledge intelligence (Phase 5/6)
+        â”œâ”€â”€ data/          # AIService, LLMAIService, LocalAIService
+        â”‚                  # LLM runtime, model manager, response parser
+        â”œâ”€â”€ domain/        # AI config, context, proposals, response
+        â””â”€â”€ presentation/  # AICubit, AI panel, proposal cards
 ```
 
 See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for details.
@@ -92,7 +92,7 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for details.
 
 ```bash
 git clone <repository-url>
-cd mindora
+cd seima
 flutter pub get
 ```
 
@@ -164,4 +164,4 @@ See [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md) for contribution guidelines.
 
 ## License
 
-Proprietary — all rights reserved.
+Proprietary â€” all rights reserved.

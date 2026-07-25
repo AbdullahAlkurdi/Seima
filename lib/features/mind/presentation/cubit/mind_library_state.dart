@@ -1,5 +1,5 @@
-import 'package:mindora/core/errors/failures.dart';
-import 'package:mindora/features/mind/domain/mind.dart';
+import 'package:seima/core/errors/failures.dart';
+import 'package:seima/features/mind/domain/mind.dart';
 
 class MindLibraryState {
   final List<Mind> minds;

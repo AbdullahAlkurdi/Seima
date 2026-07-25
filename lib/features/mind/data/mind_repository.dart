@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:mindora/core/errors/app_exception.dart';
-import 'package:mindora/features/mind/domain/mind.dart';
-import 'package:mindora/features/mind/data/id_provider.dart';
+import 'package:seima/core/errors/app_exception.dart';
+import 'package:seima/features/mind/domain/mind.dart';
+import 'package:seima/features/mind/data/id_provider.dart';
 
 class MindRepository {
   static const _mindsKey = 'minds';

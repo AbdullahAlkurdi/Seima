@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mindora/features/ai/data/model_manager.dart';
+import 'package:seima/features/ai/data/model_manager.dart';
 
 void main() {
   group('ModelManager', () {

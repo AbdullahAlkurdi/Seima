@@ -1,13 +1,13 @@
 import 'dart:async';
-import 'package:mindora/features/ai/data/ai_service.dart';
-import 'package:mindora/features/ai/data/llm_response_parser.dart';
-import 'package:mindora/features/ai/data/llm_runtime.dart';
-import 'package:mindora/features/ai/data/local_ai_service.dart';
-import 'package:mindora/features/ai/data/mind_context_builder.dart';
-import 'package:mindora/features/ai/domain/ai_config.dart';
-import 'package:mindora/features/ai/domain/ai_context.dart';
-import 'package:mindora/features/ai/domain/ai_failure.dart';
-import 'package:mindora/features/ai/domain/ai_response.dart';
+import 'package:seima/features/ai/data/ai_service.dart';
+import 'package:seima/features/ai/data/llm_response_parser.dart';
+import 'package:seima/features/ai/data/llm_runtime.dart';
+import 'package:seima/features/ai/data/local_ai_service.dart';
+import 'package:seima/features/ai/data/mind_context_builder.dart';
+import 'package:seima/features/ai/domain/ai_config.dart';
+import 'package:seima/features/ai/domain/ai_context.dart';
+import 'package:seima/features/ai/domain/ai_failure.dart';
+import 'package:seima/features/ai/domain/ai_response.dart';
 
 class LLMAIService implements AIService {
   final LocalLLMRuntime llmRuntime;

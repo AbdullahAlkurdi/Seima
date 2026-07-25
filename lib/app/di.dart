@@ -1,17 +1,17 @@
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mindora/app/router/app_router.dart';
-import 'package:mindora/app/theme/app_theme.dart';
-import 'package:mindora/features/ai/data/ai_service.dart';
-import 'package:mindora/features/ai/data/llm_runtime.dart';
-import 'package:mindora/features/ai/data/llm_ai_service.dart';
-import 'package:mindora/features/ai/data/model_manager.dart';
-import 'package:mindora/features/ai/data/process_llm_runtime.dart';
-import 'package:mindora/features/ai/presentation/cubit/ai_cubit.dart';
-import 'package:mindora/features/mind/data/mind_repository.dart';
-import 'package:mindora/features/mind/presentation/cubit/mind_cubit.dart';
-import 'package:mindora/features/mind/presentation/cubit/mind_library_cubit.dart';
-import 'package:mindora/features/mind/presentation/cubit/search_cubit.dart';
+import 'package:seima/app/router/app_router.dart';
+import 'package:seima/app/theme/app_theme.dart';
+import 'package:seima/features/ai/data/ai_service.dart';
+import 'package:seima/features/ai/data/llm_runtime.dart';
+import 'package:seima/features/ai/data/llm_ai_service.dart';
+import 'package:seima/features/ai/data/model_manager.dart';
+import 'package:seima/features/ai/data/process_llm_runtime.dart';
+import 'package:seima/features/ai/presentation/cubit/ai_cubit.dart';
+import 'package:seima/features/mind/data/mind_repository.dart';
+import 'package:seima/features/mind/presentation/cubit/mind_cubit.dart';
+import 'package:seima/features/mind/presentation/cubit/mind_library_cubit.dart';
+import 'package:seima/features/mind/presentation/cubit/search_cubit.dart';
 
 final sl = GetIt.instance;
 

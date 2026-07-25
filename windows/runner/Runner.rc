@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "mindora" "\0"
+            VALUE "FileDescription", "seima" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "mindora" "\0"
+            VALUE "InternalName", "seima" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2026 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "mindora.exe" "\0"
-            VALUE "ProductName", "mindora" "\0"
+            VALUE "OriginalFilename", "seima.exe" "\0"
+            VALUE "ProductName", "seima" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

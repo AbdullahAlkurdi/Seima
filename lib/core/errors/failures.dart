@@ -1,4 +1,4 @@
-import 'package:mindora/core/errors/app_exception.dart';
+import 'package:seima/core/errors/app_exception.dart';
 
 class Failure {
   const Failure({required this.message, this.exception});

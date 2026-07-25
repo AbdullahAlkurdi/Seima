@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import 'package:mindora/features/mind/domain/mind_connection.dart';
-import 'package:mindora/features/mind/domain/mind_node.dart';
+import 'package:seima/features/mind/domain/mind_connection.dart';
+import 'package:seima/features/mind/domain/mind_node.dart';
 
 class ConnectionPainter extends CustomPainter {
   final List<MindConnection> connections;

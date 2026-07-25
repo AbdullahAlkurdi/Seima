@@ -71,7 +71,7 @@ class _StartupScreenState extends State<StartupScreen>
                 child: Transform.scale(scale: _scale.value, child: child),
               )
             else
-              Opacity(opacity: _exitOpacity.value, child: child),
+              child ?? const SizedBox.shrink(),
             if (_controller.value < 1.0)
               Positioned.fill(
                 child: IgnorePointer(
@@ -81,7 +81,7 @@ class _StartupScreenState extends State<StartupScreen>
                       child: Opacity(
                         opacity: effectiveOpacity,
                         child: Image.asset(
-                          'assets/Mindora_Icon.png',
+                          'assets/Seima_Icon.png',
                           width: 80,
                           height: 80,
                           fit: BoxFit.contain,

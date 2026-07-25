@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:bloc_test/bloc_test.dart';
-import 'package:mindora/features/mind/data/mind_repository.dart';
-import 'package:mindora/features/mind/domain/mind.dart';
-import 'package:mindora/features/mind/presentation/cubit/mind_library_cubit.dart';
-import 'package:mindora/features/mind/presentation/cubit/mind_library_state.dart';
+import 'package:seima/features/mind/data/mind_repository.dart';
+import 'package:seima/features/mind/domain/mind.dart';
+import 'package:seima/features/mind/presentation/cubit/mind_library_cubit.dart';
+import 'package:seima/features/mind/presentation/cubit/mind_library_state.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {

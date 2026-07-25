@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mindora/features/mind/domain/mind.dart';
-import 'package:mindora/features/mind/domain/mind_node.dart';
-import 'package:mindora/features/mind/presentation/widgets/mind_canvas.dart';
+import 'package:seima/features/mind/domain/mind.dart';
+import 'package:seima/features/mind/domain/mind_node.dart';
+import 'package:seima/features/mind/presentation/widgets/mind_canvas.dart';
 
 Widget wrapCanvas(MindCanvas canvas) {
   return MaterialApp(

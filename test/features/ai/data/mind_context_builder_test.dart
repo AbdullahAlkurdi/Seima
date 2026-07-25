@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mindora/features/ai/data/mind_context_builder.dart';
-import 'package:mindora/features/ai/domain/ai_context.dart';
-import 'package:mindora/features/mind/domain/mind.dart';
-import 'package:mindora/features/mind/domain/mind_connection.dart';
-import 'package:mindora/features/mind/domain/mind_node.dart';
+import 'package:seima/features/ai/data/mind_context_builder.dart';
+import 'package:seima/features/ai/domain/ai_context.dart';
+import 'package:seima/features/mind/domain/mind.dart';
+import 'package:seima/features/mind/domain/mind_connection.dart';
+import 'package:seima/features/mind/domain/mind_node.dart';
 
 void main() {
   group('MindContextBuilder', () {
