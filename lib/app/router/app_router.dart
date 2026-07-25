@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:seima/features/mind/presentation/pages/mind_library_page.dart';
 import 'package:seima/features/mind/presentation/pages/mind_page.dart';
 import 'package:seima/features/mind/presentation/pages/search_page.dart';
+import 'package:seima/features/quick_capture/presentation/pages/quick_capture_page.dart';
 
 class AppRouter {
   static GoRouter createRouter() {
@@ -24,6 +25,11 @@ class AppRouter {
           path: '/search',
           name: 'search',
           builder: (context, state) => const SearchPage(),
+        ),
+        GoRoute(
+          path: '/quick-capture',
+          name: 'quickCapture',
+          builder: (context, state) => const QuickCapturePage(),
         ),
       ],
       errorBuilder: (context, state) => Scaffold(

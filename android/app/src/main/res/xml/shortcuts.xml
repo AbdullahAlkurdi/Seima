@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="new_thought"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutShortLabel="@string/shortcut_new_thought_short"
+        android:shortcutLongLabel="@string/shortcut_new_thought_long"
+        android:shortcutDisabledMessage="@string/shortcut_new_thought_disabled">
+        <intent
+            android:action="com.example.seima.ACTION_NEW_THOUGHT"
+            android:targetPackage="com.example.seima"
+            android:targetClass="com.example.seima.MainActivity" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="open_seima"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutShortLabel="@string/shortcut_open_seima_short"
+        android:shortcutLongLabel="@string/shortcut_open_seima_long"
+        android:shortcutDisabledMessage="@string/shortcut_open_seima_disabled">
+        <intent
+            android:action="com.example.seima.ACTION_OPEN_SEIMA"
+            android:targetPackage="com.example.seima"
+            android:targetClass="com.example.seima.MainActivity" />
+    </shortcut>
+</shortcuts>

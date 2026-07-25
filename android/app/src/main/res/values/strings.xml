@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_description">Quickly capture thoughts to your Seima mind map</string>
+    <string name="shortcut_new_thought_short">New Thought</string>
+    <string name="shortcut_new_thought_long">Capture a new thought</string>
+    <string name="shortcut_new_thought_disabled">Unavailable</string>
+    <string name="shortcut_open_seima_short">Open Seima</string>
+    <string name="shortcut_open_seima_long">Open Seima mind map</string>
+    <string name="shortcut_open_seima_disabled">Unavailable</string>
+</resources>

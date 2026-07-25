@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:background="@drawable/seima_widget_bg">
+
+    <!-- Header row: logo + title -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="SEIMA"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.08" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Capture a thought"
+            android:textColor="#B0C4DE"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <!-- Action buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/widget_action_new_thought"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:text="+ New Thought"
+            android:textSize="12sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/seima_widget_button"
+            android:gravity="center"
+            android:padding="4dp"
+            android:stateListAnimator="@null" />
+
+        <Button
+            android:id="@+id/widget_action_open_seima"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:text="Open Seima"
+            android:textSize="12sp"
+            android:textColor="#3D5A80"
+            android:background="@drawable/seima_widget_button_secondary"
+            android:gravity="center"
+            android:padding="4dp"
+            android:stateListAnimator="@null" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -78,7 +78,7 @@ class _SeimaLoadingViewState extends State<SeimaLoadingView>
             builder: (context, child) =>
                 Transform.scale(scale: _pulse.value, child: child),
             child: Image.asset(
-              'assets/Seima_Icon.png',
+              'assets/startup_logo.png',
               width: iconSize,
               height: iconSize,
               fit: BoxFit.contain,

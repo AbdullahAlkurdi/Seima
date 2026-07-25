@@ -81,7 +81,7 @@ class _StartupScreenState extends State<StartupScreen>
                       child: Opacity(
                         opacity: effectiveOpacity,
                         child: Image.asset(
-                          'assets/Seima_Icon.png',
+                          'assets/startup_logo.png',
                           width: 80,
                           height: 80,
                           fit: BoxFit.contain,
