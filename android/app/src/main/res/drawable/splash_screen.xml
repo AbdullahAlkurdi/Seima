@@ -4,6 +4,6 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@mipmap-hdpi/splash_icon" />
+            android:src="@mipmap/splash_icon" />
     </item>
 </layer-list>
