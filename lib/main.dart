@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:mindora/src/theme/app_theme.dart';
+
+final _themeController = ThemeController();
 
 void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Mindora',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+  runApp(
+    MindoraTheme(
+      controller: _themeController,
+      child: ValueListenableBuilder<ThemeMode>(
+        valueListenable: _themeController,
+        builder: (context, mode, child) {
+          return MaterialApp(
+            title: 'Mindora',
+            themeMode: mode,
+            theme: AppTheme.light(),
+            darkTheme: AppTheme.dark(),
+            home: const MyHomePage(title: 'Mindora'),
+          );
+        },
       ),
-      home: const MyHomePage(title: 'Mindora'),
-    );
-  }
+    ),
+  );
 }
 
 class MyHomePage extends StatefulWidget {
