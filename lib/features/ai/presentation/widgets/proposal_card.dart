@@ -121,7 +121,7 @@ class ProposalCard extends StatelessWidget {
             ),
             const SizedBox(height: AppSpacing.s),
             Text(
-              '${p.sourceNodeId} â†’ ${p.targetNodeId}',
+              '${p.sourceNodeId} → ${p.targetNodeId}',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 fontFamily: 'monospace',
                 fontSize: 12,

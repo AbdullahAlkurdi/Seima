@@ -13,7 +13,7 @@ void main() {
       expect(find.text('Main Content'), findsOneWidget);
     });
 
-    testWidgets('shows Mindora icon during animation', (tester) async {
+    testWidgets('shows Seima icon during animation', (tester) async {
       await tester.pumpWidget(
         MaterialApp(home: StartupScreen(child: const Text('Main Content'))),
       );

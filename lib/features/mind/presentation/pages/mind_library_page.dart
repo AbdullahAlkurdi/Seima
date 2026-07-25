@@ -299,7 +299,7 @@ class _MindCard extends StatelessWidget {
                     ),
                     const SizedBox(height: AppSpacing.xs),
                     Text(
-                      '$nodeCount nodes Â· $connCount connections Â· $lastAccessed',
+                      '$nodeCount nodes · $connCount connections · $lastAccessed',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: cs.onSurfaceVariant,
                       ),

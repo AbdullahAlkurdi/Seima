@@ -16,23 +16,17 @@ Widget createTestApp(Widget child) {
     routerConfig: GoRouter(
       initialLocation: '/',
       routes: [
-        GoRoute(
-          path: '/',
-          builder: (_, _) => child,
-        ),
+        GoRoute(path: '/', builder: (_, _) => child),
         GoRoute(
           path: '/mind/:id',
           builder: (_, state) => Scaffold(
-            body: Center(
-              child: Text('Mind ${state.pathParameters['id']}'),
-            ),
+            body: Center(child: Text('Mind ${state.pathParameters['id']}')),
           ),
         ),
         GoRoute(
           path: '/search',
-          builder: (_, _) => const Scaffold(
-            body: Center(child: Text('Search placeholder')),
-          ),
+          builder: (_, _) =>
+              const Scaffold(body: Center(child: Text('Search placeholder'))),
         ),
       ],
     ),
@@ -62,16 +56,18 @@ void main() {
     }
   });
 
-  testWidgets('MindLibraryPage renders without ProviderNotFoundException',
-      (tester) async {
+  testWidgets('MindLibraryPage renders without ProviderNotFoundException', (
+    tester,
+  ) async {
     await tester.pumpWidget(createTestApp(const MindLibraryPage()));
     await tester.pump();
 
     expect(find.byType(MindLibraryPage), findsOneWidget);
   });
 
-  testWidgets('MindLibraryPage shows empty state when no minds exist',
-      (tester) async {
+  testWidgets('MindLibraryPage shows empty state when no minds exist', (
+    tester,
+  ) async {
     await tester.pumpWidget(createTestApp(const MindLibraryPage()));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 100));
@@ -81,8 +77,7 @@ void main() {
     expect(find.text('Create Your First Mind'), findsOneWidget);
   });
 
-  testWidgets('MindLibraryPage search icon is present',
-      (tester) async {
+  testWidgets('MindLibraryPage search icon is present', (tester) async {
     await tester.pumpWidget(createTestApp(const MindLibraryPage()));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 100));
@@ -90,8 +85,7 @@ void main() {
     expect(find.byIcon(Icons.search), findsOneWidget);
   });
 
-  testWidgets('MindLibraryPage theme toggle icon is present',
-      (tester) async {
+  testWidgets('MindLibraryPage theme toggle icon is present', (tester) async {
     await tester.pumpWidget(createTestApp(const MindLibraryPage()));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 100));
@@ -99,8 +93,9 @@ void main() {
     expect(find.byIcon(Icons.light_mode_outlined), findsOneWidget);
   });
 
-  testWidgets('MindLibraryPage FAB creates a mind in repository',
-      (tester) async {
+  testWidgets('MindLibraryPage FAB creates a mind in repository', (
+    tester,
+  ) async {
     await tester.pumpWidget(createTestApp(const MindLibraryPage()));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 100));
@@ -117,8 +112,7 @@ void main() {
     expect(minds.first.title, 'My Mind');
   });
 
-  testWidgets('MindLibraryPage shows created mind in list',
-      (tester) async {
+  testWidgets('MindLibraryPage shows created mind in list', (tester) async {
     await repository.save(Mind(id: 'test-1', title: 'Test Mind'));
 
     await tester.pumpWidget(createTestApp(const MindLibraryPage()));

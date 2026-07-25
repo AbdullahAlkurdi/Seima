@@ -21,16 +21,11 @@ Widget createTestApp(Widget child) {
           path: '/',
           builder: (_, _) => const Scaffold(body: Text('Library')),
         ),
-        GoRoute(
-          path: '/search',
-          builder: (_, _) => child,
-        ),
+        GoRoute(path: '/search', builder: (_, _) => child),
         GoRoute(
           path: '/mind/:id',
           builder: (_, state) => Scaffold(
-            body: Center(
-              child: Text('Mind ${state.pathParameters['id']}'),
-            ),
+            body: Center(child: Text('Mind ${state.pathParameters['id']}')),
           ),
         ),
       ],
@@ -60,16 +55,16 @@ void main() {
     sl.reset(dispose: false);
   });
 
-  testWidgets('SearchPage renders without ProviderNotFoundException',
-      (tester) async {
+  testWidgets('SearchPage renders without ProviderNotFoundException', (
+    tester,
+  ) async {
     await tester.pumpWidget(createTestApp(const SearchPage()));
     await tester.pump();
 
     expect(find.byType(SearchPage), findsOneWidget);
   });
 
-  testWidgets('SearchPage shows initial empty state',
-      (tester) async {
+  testWidgets('SearchPage shows initial empty state', (tester) async {
     await tester.pumpWidget(createTestApp(const SearchPage()));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 100));
@@ -78,8 +73,7 @@ void main() {
     expect(find.byIcon(Icons.search), findsOneWidget);
   });
 
-  testWidgets('SearchPage clear button appears after typing',
-      (tester) async {
+  testWidgets('SearchPage clear button appears after typing', (tester) async {
     await tester.pumpWidget(createTestApp(const SearchPage()));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 100));
@@ -94,8 +88,9 @@ void main() {
     expect(find.byIcon(Icons.clear), findsWidgets);
   });
 
-  testWidgets('SearchPage shows no results for non-existent query',
-      (tester) async {
+  testWidgets('SearchPage shows no results for non-existent query', (
+    tester,
+  ) async {
     await tester.pumpWidget(createTestApp(const SearchPage()));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 100));

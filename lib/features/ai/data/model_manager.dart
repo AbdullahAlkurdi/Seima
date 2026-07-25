@@ -18,14 +18,14 @@ class ModelManager {
     if (Platform.isWindows) {
       final home = Platform.environment['USERPROFILE'];
       if (home != null) {
-        return Directory('$home\\.mindora\\models');
+        return Directory('$home\\.seima\\models');
       }
     }
     final home = Platform.environment['HOME'];
     if (home != null) {
-      return Directory('$home/.mindora/models');
+      return Directory('$home/.seima/models');
     }
-    return Directory('mindora_models');
+    return Directory('seima_models');
   }
 
   Future<bool> isModelDownloaded() async {

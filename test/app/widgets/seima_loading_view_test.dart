@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:seima/app/widgets/mindora_loading_view.dart';
+import 'package:seima/app/widgets/seima_loading_view.dart';
 
 void main() {
   group('SeimaLoadingView', () {

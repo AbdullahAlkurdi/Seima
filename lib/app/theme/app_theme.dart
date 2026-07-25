@@ -178,16 +178,10 @@ class ThemeController extends ValueNotifier<ThemeMode> {
 class SeimaTheme extends InheritedWidget {
   final ThemeController controller;
 
-  const SeimaTheme({
-    super.key,
-    required this.controller,
-    required super.child,
-  });
+  const SeimaTheme({super.key, required this.controller, required super.child});
 
   static ThemeController of(BuildContext context) {
-    return context
-        .dependOnInheritedWidgetOfExactType<SeimaTheme>()!
-        .controller;
+    return context.dependOnInheritedWidgetOfExactType<SeimaTheme>()!.controller;
   }
 
   @override

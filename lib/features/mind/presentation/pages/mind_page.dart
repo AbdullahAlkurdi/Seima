@@ -279,9 +279,10 @@ class _MindBodyState extends State<_MindBody> {
                 heroTag: 'add_node',
                 onPressed: () {
                   final cubit = context.read<MindCubit>();
+                  final count = state.mind?.nodes.length ?? 0;
                   cubit.createNode(
-                    100 + (state.mind?.nodes.length ?? 0) * 20,
-                    100 + (state.mind?.nodes.length ?? 0) * 20,
+                    100.0 + (count % 5) * 220,
+                    100.0 + (count ~/ 5) * 150,
                   );
                 },
                 child: const Icon(Icons.add),

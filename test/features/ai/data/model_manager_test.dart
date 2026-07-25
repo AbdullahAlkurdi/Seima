@@ -8,7 +8,7 @@ void main() {
     late ModelManager manager;
 
     setUp(() {
-      tempDir = Directory.systemTemp.createTempSync('mindora_model_test_');
+      tempDir = Directory.systemTemp.createTempSync('seima_model_test_');
       manager = ModelManager(modelDirectory: tempDir);
     });
 
@@ -70,7 +70,7 @@ void main() {
 
     test('defaultModelDirectory creates expected path', () {
       final dir = ModelManager.default_;
-      expect(dir.modelDirectory.path, contains('.mindora'));
+      expect(dir.modelDirectory.path, contains('.seima'));
     });
 
     test('defaultModelUrl is valid', () {

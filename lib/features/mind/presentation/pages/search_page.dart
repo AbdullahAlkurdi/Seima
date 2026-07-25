@@ -135,7 +135,7 @@ class _SearchPageState extends State<SearchPage> {
                       children: [
                         Text(
                           result.nodeId != null
-                              ? '${result.mind.title} â€º Node'
+                              ? '${result.mind.title} › Node'
                               : result.mind.title,
                           style: Theme.of(context).textTheme.bodySmall
                               ?.copyWith(color: cs.onSurfaceVariant),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:seima/app/theme/spacing.dart';
-import 'package:seima/app/widgets/mindora_loading_view.dart';
+import 'package:seima/app/widgets/seima_loading_view.dart';
 import 'package:seima/features/ai/domain/ai_failure.dart';
 import 'package:seima/features/ai/domain/ai_proposal.dart';
 import 'package:seima/features/ai/presentation/cubit/ai_cubit.dart';

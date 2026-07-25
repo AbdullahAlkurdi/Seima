@@ -81,7 +81,7 @@ class MindContextBuilder {
     } else {
       buffer.writeln('Connections:');
       for (final conn in context.connections) {
-        buffer.writeln('- ${conn.sourceNodeId} â†’ ${conn.targetNodeId}');
+        buffer.writeln('- ${conn.sourceNodeId} → ${conn.targetNodeId}');
       }
     }
 
