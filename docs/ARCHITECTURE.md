@@ -42,16 +42,16 @@ Core (Shared errors, utilities, constants)
 
 ```
 lib/
-├── main.dart                          # Entry point, bootstraps DI, renders MindoraApp
+├── main.dart                          # Entry point, bootstraps DI, renders SeimaApp
 ├── app/                               # Application infrastructure
-│   ├── app.dart                       # MindoraApp widget (MaterialApp.router)
+│   ├── app.dart                       # SeimaApp widget (MaterialApp.router)
 │   ├── di.dart                        # GetIt registration (sl instance)
 │   ├── config/
 │   │   └── app_config.dart            # App constants (name, version, phase)
 │   ├── router/
 │   │   └── app_router.dart            # GoRouter configuration
 │   └── theme/                         # Centralized design system
-│       ├── app_theme.dart             # AppTheme factory, ThemeController, MindoraTheme
+│       ├── app_theme.dart             # AppTheme factory, ThemeController, SeimaTheme
 │       ├── colors.dart                # Color tokens (seed, semantic)
 │       ├── spacing.dart               # Spacing, radius, elevation tokens
 │       └── typography.dart            # TextTheme (light + dark)
@@ -125,8 +125,8 @@ lib/
 |---|---|
 | `lib/main.dart` | Entry point, DI bootstrap, app launch |
 | `lib/app/` | Application infrastructure (shell, config, router, theme, DI) |
-| `lib/app/startup/` | Startup screen with Mindora icon animation |
-| `lib/app/widgets/` | App-wide reusable widgets (MindoraLoadingView) |
+| `lib/app/startup/` | Startup screen with Seima icon animation |
+| `lib/app/widgets/` | App-wide reusable widgets (SeimaLoadingView) |
 | `lib/core/` | Shared foundational types used across features |
 | `lib/features/` | Feature modules — each feature owns its presentation, domain, and data layers |
 | `test/` | Tests mirroring `lib/` structure |
@@ -420,7 +420,7 @@ class MindConnection {
 
 **Status:** Implemented (v1 storage format)
 
-The `MindRepository` stores all minds as a single JSON array under the `minds` key. Each mind's nodes and connections are embedded in the JSON. Storage format is versioned (`mindora_storage_version` key) for future migration.
+The `MindRepository` stores all minds as a single JSON array under the `minds` key. Each mind's nodes and connections are embedded in the JSON. Storage format is versioned (`seima_storage_version` key) for future migration.
 
 Operations:
 - `loadAll()` — Load all minds
@@ -588,6 +588,39 @@ test/
 | Tests | `_test.dart` suffix | `mind_cubit_test.dart` |
 | State classes | `*State` | `MindState` |
 | Cubit classes | `*Cubit` | `MindCubit` |
+
+---
+
+## Sharing & Interoperability Architecture
+
+Sharing and interoperability are first-class capabilities in Seima. See `docs/SHARING_INTEROPERABILITY_ARCHITECTURE.md` for the complete design.
+
+### Key Components
+
+| Component | File | Purpose |
+|---|---|---|
+| `SeimaKnowledgePackage` | `lib/features/sharing/domain/` | Canonical interchange format with schema identity |
+| `ExportService` | `lib/features/sharing/data/` | Export pipeline: .seima, clipboard, text |
+| `ImportService` | `lib/features/sharing/data/` | Import pipeline with preview-first architecture |
+| `InputDetector` | `lib/features/sharing/data/` | Auto-detect input format (canonical, JSON, text) |
+| `ImportCubit` | `lib/features/sharing/presentation/cubit/` | Import state machine (initial → preview → execute) |
+| `ShareHandler` | `lib/core/sharing/` | Platform share intent receiving via MethodChannel |
+| `ImportPreviewPage` | `lib/features/sharing/presentation/pages/` | Preview UI with validation summary and action buttons |
+
+### Data Flow
+
+```
+Mind → ExportService → SeimaKnowledgePackage → .seima file / clipboard / text
+External input → InputDetector → ImportService → SeimaKnowledgePackage → ImportPreview → ImportCubit → Mind
+```
+
+### Principles
+
+- Preview-first: never mutate user data without showing what will change.
+- Local-first: all processing is on-device.
+- User-initiated: no automatic sharing or telemetry.
+- Forward-compatible: unknown fields in the canonical format are preserved.
+- Safe: invalid input never crashes the app; user-friendly errors are shown.
 
 ---
 

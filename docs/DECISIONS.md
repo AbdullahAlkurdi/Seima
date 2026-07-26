@@ -1,6 +1,6 @@
 # Architecture Decision Records
 
-This document logs significant decisions made during Mindora's development. Each entry records a decision, its context, rationale, and consequences.
+This document logs significant decisions made during Seima's development. Each entry records a decision, its context, rationale, and consequences.
 
 New decisions should be added as the project evolves.
 
@@ -12,9 +12,9 @@ New decisions should be added as the project evolves.
 
 **Date:** 2026-07 (project inception)
 
-**Decision:** Build Mindora as a Flutter application using the Dart programming language.
+**Decision:** Build Seima as a Flutter application using the Dart programming language.
 
-**Context:** Mindora needs to run on multiple platforms (desktop, web, mobile) with a single codebase. The application requires high-performance rendering for an interactive mind-map canvas, smooth animations, and the ability to integrate with native platform features.
+**Context:** Seima needs to run on multiple platforms (desktop, web, mobile) with a single codebase. The application requires high-performance rendering for an interactive mind-map canvas, smooth animations, and the ability to integrate with native platform features.
 
 **Rationale:**
 - Flutter provides true cross-platform support from a single codebase.
@@ -36,7 +36,7 @@ New decisions should be added as the project evolves.
 
 **Date:** 2026-07 (project inception)
 
-**Decision:** Use Material 3 as the foundational design language for Mindora.
+**Decision:** Use Material 3 as the foundational design language for Seima.
 
 **Context:** The application needs a consistent, modern, and accessible design system. The design should be platform-appropriate while maintaining a distinct identity.
 
@@ -44,13 +44,13 @@ New decisions should be added as the project evolves.
 - Material 3 provides a comprehensive, accessible design system out of the box.
 - Flutter has first-class Material 3 support (`useMaterial3: true`).
 - Dynamic color (`ColorScheme.fromSeed`) provides consistent theming with minimal configuration.
-- Material 3's accessibility features (contrast, touch targets, typography scale) align with Mindora's quality goals.
+- Material 3's accessibility features (contrast, touch targets, typography scale) align with Seima's quality goals.
 - Material 3 allows customization while maintaining platform-appropriate defaults.
 
 **Consequences:**
 - UI components follow Material 3 conventions and guidelines.
 - Custom themes are built on top of Material 3 rather than replacing it.
-- Users familiar with Material Design will find Mindora intuitive.
+- Users familiar with Material Design will find Seima intuitive.
 
 ---
 
@@ -92,7 +92,7 @@ New decisions should be added as the project evolves.
 - Implementing both themes from the start prevents dark-themed widgets from being an afterthought.
 - Material 3's `ColorScheme.fromSeed` generates both light and dark schemes automatically.
 - `ValueNotifier<ThemeMode>` via `ThemeController` is a simple, sufficient approach for the current stage.
-- `InheritedWidget` (`MindoraTheme`) allows descendant widgets to access the theme controller without prop drilling.
+- `InheritedWidget` (`SeimaTheme`) allows descendant widgets to access the theme controller without prop drilling.
 
 **Consequences:**
 - Every new widget or component must be tested in both light and dark themes.
@@ -107,7 +107,7 @@ New decisions should be added as the project evolves.
 
 **Date:** 2026-07 (initial visual foundation)
 
-**Decision:** Use `InheritedWidget` (`MindoraTheme`) to propagate the `ThemeController` through the widget tree.
+**Decision:** Use `InheritedWidget` (`SeimaTheme`) to propagate the `ThemeController` through the widget tree.
 
 **Context:** The theme controller needs to be accessible from any widget without being passed explicitly through constructors.
 
@@ -118,9 +118,9 @@ New decisions should be added as the project evolves.
 - Avoided adding a dependency injection framework before the architecture needed it.
 
 **Consequences:**
-- Widgets access the controller via `MindoraTheme.of(context)`.
+- Widgets access the controller via `SeimaTheme.of(context)`.
 - The approach remains in place alongside GetIt (theme controller is now also registered in DI).
-- `MindoraTheme` still provides convenient type-safe access.
+- `SeimaTheme` still provides convenient type-safe access.
 
 ---
 
@@ -253,7 +253,7 @@ New decisions should be added as the project evolves.
 
 **Date:** 2026-07-25
 
-**Decision:** Move the theme system from `lib/src/theme/` to `lib/app/theme/` as part of the architecture reorganization.
+**Decision:** Move the theme system from `lib/app/theme/` to `lib/app/theme/` as part of the architecture reorganization.
 
 **Context:** Phase 1 established a new project structure with clear layer separation. The theme system is application infrastructure and belongs under `lib/app/`.
 
@@ -264,7 +264,7 @@ New decisions should be added as the project evolves.
 
 **Consequences:**
 - Theme files are now at `lib/app/theme/`.
-- All imports updated to `package:mindora/app/theme/...`.
+- All imports updated to `package:seima/app/theme/...`.
 - No functional changes to the theme system itself.
 
 ---
@@ -448,7 +448,7 @@ New decisions should be added as the project evolves.
 
 **Date:** 2026-07-25
 
-**Decision:** Track storage format version with a `mindora_storage_version` key in shared_preferences.
+**Decision:** Track storage format version with a `seima_storage_version` key in shared_preferences.
 
 **Context:** As the data model evolves (fields added like lastAccessedAt, tags), the storage format changes. A version tracking mechanism enables safe future migrations.
 
@@ -571,7 +571,7 @@ New decisions should be added as the project evolves.
 
 **Decision:** All AI processing must run 100% on-device. No Mind data ever leaves the user's device. No external AI APIs, backends, or cloud services are used for Mind data processing.
 
-**Context:** Mindora is designed as a local-first, privacy-first knowledge tool. User Mind data — titles, descriptions, nodes, content, tags, connections — is sensitive intellectual property. Sending this data to external AI services would violate user trust and the product's privacy commitment. Additionally, offline functionality is a core requirement.
+**Context:** Seima is designed as a local-first, privacy-first knowledge tool. User Mind data — titles, descriptions, nodes, content, tags, connections — is sensitive intellectual property. Sending this data to external AI services would violate user trust and the product's privacy commitment. Additionally, offline functionality is a core requirement.
 
 **Rationale:**
 - User data privacy is non-negotiable — Mind data never leaves the device.
@@ -683,7 +683,7 @@ New decisions should be added as the project evolves.
 
 **Date:** 2026-07-25
 
-**Decision:** Recommend Qwen2.5-1.5B-Instruct GGUF in Q4_K_M quantization as the default on-device model for Mindora.
+**Decision:** Recommend Qwen2.5-1.5B-Instruct GGUF in Q4_K_M quantization as the default on-device model for Seima.
 
 **Context:** An on-device LLM needs to be small enough to run on consumer CPUs with reasonable performance, yet capable enough to provide meaningful mind map analysis (summarization, theme extraction, expansion suggestions, structured JSON output).
 
@@ -691,7 +691,7 @@ New decisions should be added as the project evolves.
 - **Model size:** ~987MB (Q4_K_M quantization) — fits within reasonable download size.
 - **CPU performance:** 1.5B parameters runs at 15-30 tokens/second on modern CPUs without GPU.
 - **RAM usage:** ~2-3GB during inference — acceptable for desktop systems.
-- **Context length:** 32K tokens (we use 4K) — more than sufficient for Mindora's context.
+- **Context length:** 32K tokens (we use 4K) — more than sufficient for Seima's context.
 - **Instruction following:** Strong structured output capability — critical for JSON proposal parsing.
 - **License:** Apache 2.0 — permissive for commercial use.
 - **GGUF format:** Supported directly by llama.cpp.
@@ -724,7 +724,7 @@ New decisions should be added as the project evolves.
 - `dart:io` HttpClient handles download with progress tracking.
 - The AI panel shows a "Download local AI model (~1GB)" button when the model is not present.
 - During download, UI shows LinearProgressIndicator with percentage.
-- Model is saved to `~/.mindora/models/` (or `%USERPROFILE%\.mindora\models\` on Windows).
+- Model is saved to `~/.seima/models/` (or `%USERPROFILE%\.seima\models\` on Windows).
 - Model download is a one-time operation — subsequent app launches detect the existing model.
 - Download requires network access (documented, acceptable for model download only).
 - Mind data is NEVER sent over the network — only the public model file is downloaded.
@@ -814,6 +814,68 @@ New decisions should be added as the project evolves.
 - `downloadModel()` writes to `<path>.part`, verifies size, then renames to `<path>`.
 - Failure at any point before rename leaves no partial `.gguf` file.
 - `HttpException` with descriptive message is thrown on size mismatch.
-- Existing tests (model_manager_test.dart) remain passing since they test with local files.<｜end▁of▁thinking｜>
+- Existing tests (model_manager_test.dart) remain passing since they test with local files.
+
+---
+
+## ADR-033: Canonical Seima Knowledge Interchange Format
+
+**Status:** Accepted
+
+**Date:** 2026-07-26
+
+**Decision:** Establish `SeimaKnowledgePackage` as the canonical interchange format for all sharing, export, and import operations. Use a JSON-based schema with explicit `schema` and `seima_knowledge_version` fields.
+
+**Context:** Seima previously had only an internal JSON serialization format (`Mind.toJson()`) that was tightly coupled to the app's domain model. There was no:
+- Schema identification mechanism
+- Versioned interchange format
+- Forward/backward compatibility design
+- Separation between storage and interchange concerns
+- Support for external knowledge ingestion
+
+**Rationale:**
+- A separate canonical format allows the internal domain model to evolve independently from the interchange format.
+- Explicit `schema` identifier prevents confusion with other JSON formats.
+- Version field enables future format evolution without breaking existing data.
+- Forward-compatible design (unknown fields preserved) supports seamless upgrades.
+- The `PackageMind`/`PackageNode`/`PackageConnection` abstractions are simpler than the full domain model, making the format easier to document and implement in other languages.
+- Human-readable JSON is debuggable and testable without special tools.
+- The `.seima` extension and `application/vnd.seima.knowledge` MIME type give the format identity.
+
+**Consequences:**
+- All export/import operations now use `SeimaKnowledgePackage` as the intermediate representation.
+- `ExportService.convertMind()` transforms `Mind` → `SeimaKnowledgePackage`.
+- `ImportService` parses `SeimaKnowledgePackage` → `Mind`.
+- Old export format (version 1 `{'version': 1, 'mind': ...}`) is still detected by `InputDetector` and converted.
+- New code depends on `package:path_provider`, `package:share_plus`, `package:file_picker` for platform I/O.
+- Android share intent receiving requires MethodChannel (`com.seima/sharing`) and intent filters.
+
+---
+
+## ADR-034: Import Pipeline with Preview-First Architecture
+
+**Status:** Accepted
+
+**Date:** 2026-07-26
+
+**Decision:** All import operations must show a preview before any data mutation. The `ImportService` produces an `ImportPreview` that is presented to the user before `executeAsNewMind()` or `executeMergeIntoMind()` is called.
+
+**Context:** Previously, `MindCubit.importMind()` directly imported a mind without showing the user what was being imported. This could:
+- Overwrite existing minds without warning
+- Import corrupted or unexpected data silently
+- Confuse users about what content was added
+
+**Rationale:**
+- Preview-first is safer than import-first. Users can cancel before any data is written.
+- The preview communicates: source type, title, node count, connection count, warnings, and errors.
+- Users can choose: create new mind, merge into existing, or cancel.
+- This pattern is consistent with Seima's principle that AI proposals must be confirmed.
+- The undo stack captures the pre-import state, making merges reversible.
+
+**Consequences:**
+- `ImportCubit` manages a 4-step state machine: `initial → loading → preview → executing → success/failure`.
+- All import operations flow through preview before execution.
+- Integration with `ImportPreviewPage` provides the UI for preview display and action selection.
+- `ImportDestinationPicker` dialog lets users choose which mind to merge into.<｜end▁of▁thinking｜>
 
 

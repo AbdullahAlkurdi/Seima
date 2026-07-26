@@ -311,7 +311,7 @@ class MindCubit extends Cubit<MindState> {
       state.copyWith(
         clearSelection: true,
         clearSelectedConnection: true,
-        clearConnectionSource: true,
+        clearConnectionSource: false,
       ),
     );
   }
@@ -433,6 +433,21 @@ class MindCubit extends Cubit<MindState> {
           'Invalid import: connection references non-existent target node "${conn.targetNodeId}"',
         );
       }
+    }
+  }
+
+  Future<void> deleteMind(String id) async {
+    try {
+      await repository.delete(id);
+      if (state.mind?.id == id) {
+        emit(state.copyWith(mind: null));
+      }
+    } catch (e) {
+      emit(
+        state.copyWith(
+          error: Failure.unknown('Failed to delete mind'),
+        ),
+      );
     }
   }
 

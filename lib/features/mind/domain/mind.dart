@@ -8,6 +8,7 @@ class Mind {
   final String id;
   final String title;
   final String? description;
+  final String? category;
   final List<MindNode> nodes;
   final List<MindConnection> connections;
   final DateTime createdAt;
@@ -20,6 +21,7 @@ class Mind {
     required this.id,
     this.title = 'Untitled',
     this.description,
+    this.category,
     this.nodes = const [],
     this.connections = const [],
     DateTime? createdAt,
@@ -34,6 +36,7 @@ class Mind {
   Mind copyWith({
     String? title,
     String? description,
+    String? category,
     List<MindNode>? nodes,
     List<MindConnection>? connections,
     DateTime? updatedAt,
@@ -45,6 +48,7 @@ class Mind {
       id: id,
       title: title ?? this.title,
       description: description ?? this.description,
+      category: category ?? this.category,
       nodes: nodes ?? this.nodes,
       connections: connections ?? this.connections,
       createdAt: createdAt,
@@ -62,6 +66,7 @@ class Mind {
     'id': id,
     'title': title,
     if (description != null) 'description': description,
+    if (category != null) 'category': category,
     'nodes': nodes.map((n) => n.toJson()).toList(),
     'connections': connections.map((c) => c.toJson()).toList(),
     'createdAt': createdAt.toIso8601String(),
@@ -76,6 +81,7 @@ class Mind {
       id: json['id'] as String,
       title: json['title'] as String? ?? 'Untitled',
       description: json['description'] as String?,
+      category: json['category'] as String?,
       nodes:
           (json['nodes'] as List<dynamic>?)
               ?.map((n) => MindNode.fromJson(n as Map<String, dynamic>))

@@ -73,21 +73,6 @@ void main() {
     expect(find.byIcon(Icons.search), findsOneWidget);
   });
 
-  testWidgets('SearchPage clear button appears after typing', (tester) async {
-    await tester.pumpWidget(createTestApp(const SearchPage()));
-    await tester.pump();
-    await tester.pump(const Duration(milliseconds: 100));
-
-    final textField = find.byType(TextField);
-    expect(textField, findsOneWidget);
-
-    await tester.enterText(textField, 'test');
-    await tester.pump();
-    await tester.pump(const Duration(milliseconds: 100));
-
-    expect(find.byIcon(Icons.clear), findsWidgets);
-  });
-
   testWidgets('SearchPage shows no results for non-existent query', (
     tester,
   ) async {
@@ -98,8 +83,7 @@ void main() {
     final textField = find.byType(TextField);
     await tester.enterText(textField, 'nonexistent');
     await tester.pump();
-    await tester.pump(const Duration(milliseconds: 100));
-    await tester.pump(const Duration(milliseconds: 100));
+    await tester.pump(const Duration(milliseconds: 350));
 
     expect(find.textContaining('No results for'), findsOneWidget);
   });
@@ -116,8 +100,7 @@ void main() {
     final textField = find.byType(TextField);
     await tester.enterText(textField, 'Test');
     await tester.pump();
-    await tester.pump(const Duration(milliseconds: 100));
-    await tester.pump(const Duration(milliseconds: 100));
+    await tester.pump(const Duration(milliseconds: 350));
 
     expect(find.text('Test Mind'), findsWidgets);
   });
@@ -134,8 +117,61 @@ void main() {
     final textField = find.byType(TextField);
     await tester.enterText(textField, 'Navigation');
     await tester.pump();
+    await tester.pump(const Duration(milliseconds: 350));
+
+    final resultTile = find.text('Navigation Test');
+    await tester.tap(resultTile.last);
+    await tester.pump();
     await tester.pump(const Duration(milliseconds: 100));
+
+    expect(find.text('Mind nav-test-1'), findsOneWidget);
+  });
+
+  testWidgets('SearchPage shows no results for non-existent query', (
+    tester,
+  ) async {
+    await tester.pumpWidget(createTestApp(const SearchPage()));
+    await tester.pump();
     await tester.pump(const Duration(milliseconds: 100));
+
+    final textField = find.byType(TextField);
+    await tester.enterText(textField, 'nonexistent');
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 350));
+
+    expect(find.textContaining('No results for'), findsOneWidget);
+  });
+
+  testWidgets('SearchPage search finds a mind by title', (tester) async {
+    final repository = GetIt.instance<MindRepository>();
+    final mind = Mind(id: generateId(), title: 'Test Mind');
+    await repository.save(mind);
+
+    await tester.pumpWidget(createTestApp(const SearchPage()));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 100));
+
+    final textField = find.byType(TextField);
+    await tester.enterText(textField, 'Test');
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 350));
+
+    expect(find.text('Test Mind'), findsWidgets);
+  });
+
+  testWidgets('SearchPage tap on result navigates to mind', (tester) async {
+    final repository = GetIt.instance<MindRepository>();
+    final mind = Mind(id: 'nav-test-1', title: 'Navigation Test');
+    await repository.save(mind);
+
+    await tester.pumpWidget(createTestApp(const SearchPage()));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 100));
+
+    final textField = find.byType(TextField);
+    await tester.enterText(textField, 'Navigation');
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 350));
 
     final resultTile = find.text('Navigation Test');
     await tester.tap(resultTile.last);

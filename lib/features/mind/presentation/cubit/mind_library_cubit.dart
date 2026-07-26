@@ -27,14 +27,16 @@ class MindLibraryCubit extends Cubit<MindLibraryState> {
     }
   }
 
-  Future<void> create() async {
-    final mind = Mind(id: generateId(), title: 'My Mind');
+  Future<Mind?> create({String title = 'My Mind', String? category}) async {
     try {
+      final mind = Mind(id: generateId(), title: title, category: category);
       await repository.save(mind);
       final minds = [...state.minds, mind];
       emit(state.copyWith(minds: minds));
+      return mind;
     } catch (e) {
       emit(state.copyWith(error: Failure.unknown('Failed to create mind')));
+      return null;
     }
   }
 
@@ -59,6 +61,15 @@ class MindLibraryCubit extends Cubit<MindLibraryState> {
       emit(state.copyWith(minds: minds));
     } catch (e) {
       emit(state.copyWith(error: Failure.unknown('Failed to delete mind')));
+    }
+  }
+
+  Future<void> clearAll() async {
+    try {
+      await repository.deleteAll();
+      emit(state.copyWith(minds: []));
+    } catch (e) {
+      emit(state.copyWith(error: Failure.unknown('Failed to clear all data')));
     }
   }
 

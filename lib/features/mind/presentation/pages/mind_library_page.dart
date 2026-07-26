@@ -29,12 +29,65 @@ class _MindLibraryPageState extends State<MindLibraryPage> {
     context.push('/mind/$id');
   }
 
-  void _createMind() async {
-    await _cubit.create();
-    final state = _cubit.state;
-    if (state.minds.isNotEmpty && !state.minds.any((m) => m.id == '')) {
-      final created = state.minds.first;
-      _openMind(created.id);
+  Future<void> _createMind() async {
+    final nameController = TextEditingController();
+    final categoryController = TextEditingController();
+    final result = await showDialog<(String name, String? category)>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('New Mind'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              controller: nameController,
+              autofocus: true,
+              textCapitalization: TextCapitalization.sentences,
+              decoration: const InputDecoration(
+                labelText: 'Mind Name',
+                hintText: 'e.g., Project Alpha',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: AppSpacing.m),
+            TextField(
+              controller: categoryController,
+              textCapitalization: TextCapitalization.sentences,
+              decoration: const InputDecoration(
+                labelText: 'Category (optional)',
+                hintText: 'e.g., Work, Learning, Personal',
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(),
+            child: const Text('Cancel'),
+          ),
+          FilledButton(
+            onPressed: () {
+              final name = nameController.text.trim();
+              if (name.isEmpty) return;
+              final cat = categoryController.text.trim();
+              Navigator.of(ctx).pop((name, cat.isEmpty ? null : cat));
+            },
+            child: const Text('Create'),
+          ),
+        ],
+      ),
+    );
+    if (result == null || !mounted) return;
+    final mind = await _cubit.create(title: result.$1, category: result.$2);
+    if (mind != null && mounted) {
+      _openMind(mind.id);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Created "${mind.title}"'),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
     }
   }
 
@@ -133,6 +186,21 @@ class _MindLibraryBody extends StatelessWidget {
         title: Text(AppConfig.appName),
         centerTitle: true,
         actions: [
+          IconButton(
+            icon: const Icon(Icons.file_download),
+            tooltip: 'Import',
+            onPressed: () => context.push('/import'),
+          ),
+          IconButton(
+            icon: const Icon(Icons.upload),
+            tooltip: 'Export',
+            onPressed: () => context.push('/export'),
+          ),
+          IconButton(
+            icon: const Icon(Icons.edit_note),
+            tooltip: 'Quick Capture',
+            onPressed: () => context.push('/quick-capture'),
+          ),
           IconButton(
             icon: const Icon(Icons.search),
             tooltip: 'Search',
@@ -298,6 +366,26 @@ class _MindCard extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: AppSpacing.xs),
+                    if (mind.category != null && mind.category!.isNotEmpty) ...[
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: AppSpacing.xs,
+                          vertical: 2,
+                        ),
+                        decoration: BoxDecoration(
+                          color: cs.secondaryContainer,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Text(
+                          mind.category!,
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelSmall
+                              ?.copyWith(fontSize: 10),
+                        ),
+                      ),
+                      const SizedBox(width: AppSpacing.xs),
+                    ],
                     Text(
                       '$nodeCount nodes · $connCount connections · $lastAccessed',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(

@@ -10,7 +10,10 @@
 Local persistence hardened with atomic backup-and-write, stale-write detection via sequenceNumber, and corrupted storage auto-recovery. Versioned storage schema with forward-compatible JSON parsing. Undo/redo preserved. AI proposal validation hardened. LLM runtime: concurrent generation guard, 120s timeout, process cleanup. Model download: integrity check, orphan cleanup, empty-file rejection. Autosave: sequenceNumber stale-write protection. Error recovery: Failure caught in importMind. 258 tests pass, 0 analyzer issues.
 
 **Phase 8C — Visual Identity & Loading Experience** (Complete)
-Official Mindora icon integrated across all platforms. App launcher icons for Android, iOS, Windows, and macOS. Native splash screens (Android launch_background.xml, iOS LaunchScreen.storyboard) with centered Mindora icon. Flutter startup animation (StartupScreen) with scale/opacity transition from icon to main UI. Reusable MindoraLoadingView component with three variants (fullPage, compact, overlay), pulse animation, optional progress indicator, and liveRegion semantics. AI panel loading states updated to use MindoraLoadingView. ColorScheme and theme tokens for light/dark mode. 268 tests pass, 0 analyzer issues.
+Official Seima icon integrated across all platforms. App launcher icons for Android, iOS, Windows, and macOS. Native splash screens (Android launch_background.xml, iOS LaunchScreen.storyboard) with centered Seima icon. Flutter startup animation (StartupScreen) with scale/opacity transition from icon to main UI. Reusable SeimaLoadingView component with three variants (fullPage, compact, overlay), pulse animation, optional progress indicator, and liveRegion semantics. AI panel loading states updated to use SeimaLoadingView. ColorScheme and theme tokens for light/dark mode. 268 tests pass, 0 analyzer issues.
+
+**Phase 8D — Sharing & Interoperability Foundation** (Complete)
+Canonical Seima knowledge interchange format established (`SeimaKnowledgePackage`) with explicit schema identity (`seima_knowledge`), version field, forward-compatible parsing, and deterministic serialization. Export pipeline (`ExportService`) supports `.seima` file output, clipboard copy, and human-readable text representation. Import pipeline (`ImportService`) supports `.seima` files, canonical JSON, plain text, and clipboard content with auto-format detection (`InputDetector`). Import preview screen shows source, title, node/connection count, warnings, and errors before any data mutation. Users can choose to import as new mind or merge into existing mind. Android share intent receiving implemented via intent filters and MethodChannel (`com.seima/sharing`). Share handler integrated at app startup for seamless "Share into Seima" flow. Export page added with per-mind export options. Share button added to mind workspace app bar. Import/Export settings page rewritten with real functionality. Architecture documented in `docs/SHARING_INTEROPERABILITY_ARCHITECTURE.md`. Two new ADRs (ADR-033, ADR-034). New dependencies: `path_provider`, `share_plus`, `file_picker`.
 
 ---
 
@@ -21,7 +24,7 @@ Official Mindora icon integrated across all platforms. App launcher icons for An
 - [x] Cross-platform scaffold (Android, iOS, Web, Windows, macOS, Linux)
 - [x] Centralized theme system (colors, typography, spacing, app_theme)
 - [x] Light and dark theme support with Material 3
-- [x] Theme mode switching (ThemeController + MindoraTheme InheritedWidget)
+- [x] Theme mode switching (ThemeController + SeimaTheme InheritedWidget)
 - [x] ThemeController.toggle() method
 
 ### Phase 1 — App Architecture
@@ -33,7 +36,7 @@ Official Mindora icon integrated across all platforms. App launcher icons for An
 - [x] App configuration and shell
 - [x] Test foundation
 
-### Phase 2 — Core Mindora Experience
+### Phase 2 — Core Seima Experience
 - [x] Domain models — Mind, MindNode, MindConnection, NodeType
 - [x] JSON serialization — toJson/fromJson for all models
 - [x] Local persistence — shared_preferences-based MindRepository
@@ -234,10 +237,10 @@ Primary objectives:
 ## Verification Status
 
 | Check | Result | Date |
-|---|---|---|
-| `flutter analyze` | No issues found | 2026-07-25 |
-| `flutter test` | All 219 tests passed | 2026-07-25 |
-| `dart format .` | No formatting issues | 2026-07-25 |
+|---|---|---|---|
+| `flutter analyze` | No issues found | 2026-07-26 |
+| `flutter test` | All tests passed | 2026-07-26 |
+| `dart format .` | No formatting issues | 2026-07-26 |
 | Architecture | Feature-first + clean separation + AI layers + LLM runtime | Verified |
 | Theme system | Light + Dark, M3, seed-based | Verified |
 | Routing | Library, workspace, search routes | Verified |
@@ -250,6 +253,12 @@ Primary objectives:
 | No new external deps | Uses only dart:io (built into SDK) | Verified |
 | Node types | text, task, question, idea with colors/icons | Verified |
 | Connection selection | Tap to select, highlight, delete | Verified |
+| Canonical format | SeimaKnowledgePackage with schema ID, version, forward-compatible parsing | Verified |
+| Export pipeline | ExportService: .seima file, clipboard, text, share | Verified |
+| Import pipeline | ImportService: canonical JSON, plain text, clipboard with auto-detect | Verified |
+| Import preview | Preview with source, title, node/connection count, warnings, errors | Verified |
+| Import safety | Preview before import, new mind or merge, never silent overwrite | Verified |
+| Share into Seima | Android intent filters + MethodChannel + startup handler | Verified |
 | Import/Export | JSON format with validation | Verified |
 | Drag undo grouping | Single undo per drag, not 50+ entries | Verified |
 | Bidirectional duplicates | Both directions rejected | Verified |

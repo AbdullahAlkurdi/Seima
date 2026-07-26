@@ -1,6 +1,6 @@
 # Development Guide
 
-This document describes how to set up, develop, and maintain Mindora.
+This document describes how to set up, develop, and maintain Seima.
 
 ---
 
@@ -238,7 +238,7 @@ The LLM architecture has three layers:
 
 1. Download a llama.cpp compatible executable (e.g., `llama-cli` from https://github.com/ggerganov/llama.cpp/releases)
 2. Download a GGUF model (e.g., Qwen2.5-1.5B-Instruct-Q4_K_M from HuggingFace)
-3. Place both in `~/.mindora/models/` (or `%USERPROFILE%\.mindora\models\` on Windows)
+3. Place both in `~/.seima/models/` (or `%USERPROFILE%\.seima\models\` on Windows)
 4. The AI panel will auto-detect the model on open
 5. Or set paths in `AIConfig` (modelPath, llamaExecutablePath)
 
@@ -256,7 +256,7 @@ The LLM architecture has three layers:
 
 ## Platform Icons & Assets
 
-The Mindora icon (`assets/Mindora_Icon.png`) serves as the source for all platform icons.
+The Seima icon (`assets/Seima_Icon.png`) serves as the source for all platform icons.
 
 ### Regenerating Platform Icons
 
@@ -274,8 +274,8 @@ This generates:
 The generated files are checked into the platform-specific directories and referenced from native configuration (Android `AndroidManifest.xml`, iOS `Assets.xcassets`, Windows `Runner.rc`).
 
 ### Native Splash
-- **Android:** `android/app/src/main/res/drawable/launch_background.xml` — centered Mindora icon on white background
-- **iOS:** `ios/Runner/Base.lproj/LaunchScreen.storyboard` — centered LaunchImage (Mindora icon)
+- **Android:** `android/app/src/main/res/drawable/launch_background.xml` — centered Seima icon on white background
+- **iOS:** `ios/Runner/Base.lproj/LaunchScreen.storyboard` — centered LaunchImage (Seima icon)
 
 ---
 

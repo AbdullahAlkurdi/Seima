@@ -78,6 +78,20 @@ class AICubit extends Cubit<AIState> {
     emit(state.copyWith(modelState: ModelState.notAvailable));
   }
 
+  Future<void> cancelDownloadModel() async {
+    if (modelManager != null) {
+      await modelManager!.cancelDownload();
+    }
+    if (state.isModelDownloading) {
+      emit(
+        state.copyWith(
+          modelState: ModelState.notAvailable,
+          clearDownloadProgress: true,
+        ),
+      );
+    }
+  }
+
   Future<void> downloadModel() async {
     if (modelManager == null) {
       emit(

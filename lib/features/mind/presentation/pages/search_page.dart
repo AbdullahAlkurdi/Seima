@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -16,49 +17,68 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   late SearchCubit _cubit;
   late TextEditingController _controller;
+  Timer? _debounceTimer;
 
   @override
   void initState() {
     super.initState();
     _cubit = GetIt.instance<SearchCubit>();
     _controller = TextEditingController();
-    _controller.addListener(() => setState(() {}));
+    _controller.addListener(_onTextChanged);
   }
 
   @override
   void dispose() {
+    _debounceTimer?.cancel();
     _controller.dispose();
     super.dispose();
   }
 
-  void _onSearch(String query) {
-    _cubit.search(query.trim());
+  void _onTextChanged() {
+    _debounceTimer?.cancel();
+    _debounceTimer = Timer(const Duration(milliseconds: 300), () {
+      if (mounted) {
+        _cubit.search(_controller.text.trim());
+      }
+    });
   }
 
   void _openResult(SearchResult result) {
-    context.push('/mind/${result.mind.id}');
+    context.go('/mind/${result.mind.id}');
+  }
+
+  void _dismissKeyboard() {
+    FocusScope.of(context).unfocus();
   }
 
   @override
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
-    return BlocProvider<SearchCubit>.value(
-      value: _cubit,
+    return GestureDetector(
+      onTap: _dismissKeyboard,
+      behavior: HitTestBehavior.opaque,
       child: Scaffold(
         appBar: AppBar(
           title: TextField(
             controller: _controller,
             autofocus: true,
+            textInputAction: TextInputAction.search,
+            onSubmitted: (_) => _dismissKeyboard(),
             decoration: const InputDecoration(
               hintText: 'Search minds and nodes...',
               border: InputBorder.none,
             ),
-            onChanged: _onSearch,
+          ),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            tooltip: 'Back to Library',
+            onPressed: () => context.go('/'),
           ),
           actions: [
             if (_controller.text.isNotEmpty)
               IconButton(
                 icon: const Icon(Icons.clear),
+                tooltip: 'Clear search',
                 onPressed: () {
                   _controller.clear();
                   _cubit.clear();
@@ -91,6 +111,26 @@ class _SearchPageState extends State<SearchPage> {
             }
             if (state.isSearching) {
               return const Center(child: CircularProgressIndicator());
+            }
+            if (state.error != null) {
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.error_outline, size: 48, color: cs.error),
+                    const SizedBox(height: AppSpacing.m),
+                    Text(
+                      state.error!.message,
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    const SizedBox(height: AppSpacing.l),
+                    FilledButton(
+                      onPressed: () => _cubit.search(state.query),
+                      child: const Text('Retry'),
+                    ),
+                  ],
+                ),
+              );
             }
             if (state.results.isEmpty) {
               return Center(

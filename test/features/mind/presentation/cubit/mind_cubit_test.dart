@@ -556,7 +556,7 @@ void main() {
       );
 
       blocTest<MindCubit, MindState>(
-        'onCanvasTap clears all selections',
+        'onCanvasTap clears selections but preserves connection mode',
         build: () => MindCubit(repository: repository),
         seed: () {
           return const MindState().copyWith(
@@ -570,7 +570,7 @@ void main() {
         verify: (cubit) {
           expect(cubit.state.selectedNodeIds, isEmpty);
           expect(cubit.state.selectedConnectionId, isNull);
-          expect(cubit.state.connectionSourceNodeId, isNull);
+          expect(cubit.state.connectionSourceNodeId, 'n1');
         },
       );
     });

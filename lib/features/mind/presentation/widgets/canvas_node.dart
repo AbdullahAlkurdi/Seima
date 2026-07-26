@@ -199,7 +199,7 @@ class CanvasNodeWidget extends StatelessWidget {
 
   Widget _buildActionBar(ColorScheme cs) {
     return Container(
-      height: 32,
+      height: 40,
       decoration: BoxDecoration(
         color: cs.surfaceContainerHighest.withValues(alpha: 0.5),
         borderRadius: const BorderRadius.only(
@@ -250,15 +250,16 @@ class _ActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
     return SizedBox(
-      width: 32,
-      height: 32,
+      width: 48,
+      height: 40,
       child: IconButton(
-        icon: Icon(icon, size: 14),
+        icon: Icon(icon, size: 18),
         tooltip: tooltip,
         color: color ?? cs.onSurfaceVariant,
         onPressed: onPressed,
         padding: EdgeInsets.zero,
         visualDensity: VisualDensity.compact,
+        splashRadius: 24,
       ),
     );
   }

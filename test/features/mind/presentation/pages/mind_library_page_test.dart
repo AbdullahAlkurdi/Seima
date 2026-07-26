@@ -100,11 +100,14 @@ void main() {
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 100));
 
-    expect(find.text('New Mind'), findsOneWidget);
-
     await tester.tap(find.text('New Mind'));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 100));
+
+    expect(find.text('Mind Name'), findsOneWidget);
+    await tester.enterText(find.byType(TextField).first, 'My Mind');
+    await tester.tap(find.text('Create'));
+    await tester.pump();
     await tester.pump(const Duration(milliseconds: 100));
 
     final minds = await repository.loadAll();

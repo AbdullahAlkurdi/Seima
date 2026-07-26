@@ -3,8 +3,14 @@ import 'dart:io';
 
 class ModelManager {
   final Directory modelDirectory;
+  HttpClient? _activeClient;
 
   ModelManager({required this.modelDirectory});
+
+  Future<void> cancelDownload() async {
+    _activeClient?.close(force: true);
+    _activeClient = null;
+  }
 
   static const defaultModelFileName = 'qwen2.5-1.5b-instruct-q4_k_m.gguf';
   static const defaultModelUrl =
@@ -87,6 +93,7 @@ class ModelManager {
     }
 
     final client = HttpClient();
+    _activeClient = client;
     try {
       final request = await client.getUrl(Uri.parse(downloadUrl));
       final response = await request.close();
@@ -133,11 +140,13 @@ class ModelManager {
       await tempFile.rename(targetFile.path);
       return targetFile.path;
     } finally {
+      _activeClient = null;
       client.close();
     }
   }
 
   Future<void> deleteModel() async {
+    await cancelDownload();
     if (!await modelDirectory.exists()) return;
     final files = await modelDirectory.list().toList();
     for (final file in files) {

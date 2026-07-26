@@ -24,7 +24,19 @@
 | **Differentiating** | AI conversation on selected nodes | **Implemented** |
 | **Differentiating** | Smart connections between maps | Future |
 | **Differentiating** | Visual theme per map | Future |
-| **Future** | Export (image, PDF, markdown) | Future |
+| **Sharing** | Canonical Seima knowledge format (.seima) | **Implemented** |
+| **Sharing** | Export to .seima file | **Implemented** |
+| **Sharing** | Copy mind to clipboard (canonical JSON) | **Implemented** |
+| **Sharing** | Human-readable text export | **Implemented** |
+| **Sharing** | Import from .seima file | **Implemented** |
+| **Sharing** | Import from plain text | **Implemented** |
+| **Sharing** | Import from clipboard | **Implemented** |
+| **Sharing** | Import preview (new mind / merge) | **Implemented** |
+| **Sharing** | Android share sheet (Share into Seima) | **Implemented** |
+| **Sharing** | Import validation and safety checks | **Implemented** |
+| **Future** | Markdown import/export | Future |
+| **Future** | Image/PDF export | Future |
+| **Future** | XMind/FreeMind/OPML import | Future |
 | **Future** | Cloud sync | Future |
 | **Future** | Templates | Future |
 | **Future** | Rich media nodes | Future |
@@ -38,7 +50,7 @@
 
 ## Core User Journey
 
-1. User opens Mindora and sees their map library
+1. User opens Seima and sees their map library
 2. User creates or opens a mind map
 3. User adds nodes (ideas, tasks, concepts)
 4. User connects nodes to show relationships
@@ -108,7 +120,7 @@ Create/Open Map → Add/Edit Nodes → Connect Ideas → Refine Structure → AI
 - **Performance:** Maps with hundreds of nodes remain responsive.
 - **Quality:** Zero crashes in normal use; consistent behavior across platforms.
 - **AI differentiation:** AI assistance genuinely helps users think better, not just automate tasks.
-- **Adoption:** Users choose Mindora as their primary thinking tool.
+- **Adoption:** Users choose Seima as their primary thinking tool.
 
 ---
 
@@ -120,4 +132,4 @@ The following areas are not yet defined and require product discovery:
 - Monetization model (if any)
 - Collaborative features
 - Integration API design
-- Specific export formats and fidelity
+- Enhanced export formats (Markdown, image, PDF) fidelity

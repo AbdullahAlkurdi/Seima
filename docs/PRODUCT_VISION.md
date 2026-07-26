@@ -1,10 +1,10 @@
 # Product Vision
 
-## What Mindora Is
+## What Seima Is
 
-Mindora is a knowledge and thinking tool that combines visual mind-mapping with AI-assisted reasoning. It helps users organize ideas, explore connections between concepts, and develop their thinking with the support of an intelligent partner.
+Seima is a knowledge and thinking tool that combines visual mind-mapping with AI-assisted reasoning. It helps users organize ideas, explore connections between concepts, and develop their thinking with the support of an intelligent partner.
 
-Mindora is being built as a serious, production-quality application — not a prototype or experiment.
+Seima is being built as a serious, production-quality application — not a prototype or experiment.
 
 ## The Problem
 
@@ -14,7 +14,7 @@ People regularly work with complex, interconnected ideas — planning projects, 
 - **Too unstructured** (whiteboards, free-form canvas tools) — they offer freedom but lack the structure to turn exploration into actionable results.
 - **Too isolated** (most tools) — they don't help users think *better*; they only capture what the user already knows.
 
-Mindora aims to fill this gap: a structured thinking environment with an AI partner that helps users go further than they could alone.
+Seima aims to fill this gap: a structured thinking environment with an AI partner that helps users go further than they could alone.
 
 ## Target User
 
@@ -28,7 +28,7 @@ The primary user is someone who values deep work, structured thinking, and wants
 
 ## Core User Value
 
-Mindora helps users **think better** by:
+Seima helps users **think better** by:
 
 1. Providing a visual space to capture and connect ideas naturally
 2. Using AI to help refine, extend, and question thinking
@@ -40,7 +40,7 @@ Mindora helps users **think better** by:
 - **Augment, don't replace** — AI is a thinking partner, not a replacement for the user's mind.
 - **Structure enables creativity** — The right constraints make thinking clearer, not more limited.
 - **Visual thinking first** — The mind-map is the primary interface because spatial relationships reflect how ideas connect.
-- **Quality over speed** — Mindora prioritizes a polished, reliable experience over rapid feature shipping.
+- **Quality over speed** — Seima prioritizes a polished, reliable experience over rapid feature shipping.
 - **User-owned knowledge** — The user's ideas and data belong to the user.
 
 ## Product Principles
@@ -53,7 +53,7 @@ Mindora helps users **think better** by:
 6. **Consistent and polished** — Every interaction is intentional and well-crafted.
 7. **Privacy-respecting** — User data is treated with care and transparency.
 
-## What Mindora Is NOT
+## What Seima Is NOT
 
 - Not a replacement for dedicated note-taking apps (Obsidian, Notion, Roam) — though it may integrate with them.
 - Not a project management tool — though it can help plan projects.
@@ -63,9 +63,9 @@ Mindora helps users **think better** by:
 
 ## Long-Term Vision
 
-Mindora becomes a user's primary environment for thinking, learning, and working with complex ideas — a personal knowledge system where visual maps, AI assistance, and structured knowledge management converge into a seamless experience.
+Seima becomes a user's primary environment for thinking, learning, and working with complex ideas — a personal knowledge system where visual maps, AI assistance, and structured knowledge management converge into a seamless experience.
 
-**Current reality:** Mindora has a full mind-mapping workspace with multi-selection, node types (text/task/question/idea), curved bezier connections, connection selection, import/export, debounced autosave, and a local-first AI system with real on-device LLM inference on desktop (Windows, macOS, Linux) via llama.cpp subprocess, with heuristic fallback on mobile/web. Model is optional (~1GB Qwen2.5-1.5B, downloaded on-demand). 219 tests pass, 0 analyzer issues.
+**Current reality:** Seima has a full mind-mapping workspace with multi-selection, node types (text/task/question/idea), curved bezier connections, connection selection, import/export, debounced autosave, and a local-first AI system with real on-device LLM inference on desktop (Windows, macOS, Linux) via llama.cpp subprocess, with heuristic fallback on mobile/web. Model is optional (~1GB Qwen2.5-1.5B, downloaded on-demand). 219 tests pass, 0 analyzer issues.
 
 **Intended direction:** Add FFI-based LLM runtime for mobile platforms, improve model download UX, and expand AI analysis capabilities.
 

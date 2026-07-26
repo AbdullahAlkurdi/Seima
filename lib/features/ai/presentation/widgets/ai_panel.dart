@@ -30,7 +30,9 @@ class AIPanel extends StatelessWidget {
       maxChildSize: 0.85,
       expand: false,
       builder: (context, scrollController) {
-        return Container(
+        return SafeArea(
+          top: false,
+          child: Container(
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.surface,
             borderRadius: const BorderRadius.vertical(
@@ -62,7 +64,8 @@ class AIPanel extends StatelessWidget {
               ),
             ],
           ),
-        );
+        ),
+      );
       },
     );
   }

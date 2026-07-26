@@ -8,7 +8,7 @@ A mind-mapping application integrated with an AI assistant for organizing ideas,
 
 ## Product Vision
 
-Mindora helps users think clearly by combining structured mind-mapping with AI-assisted reasoning. The goal is a production-quality knowledge application where users can build, connect, and explore ideas visually while an AI partner helps refine and extend their thinking.
+Seima helps users think clearly by combining structured mind-mapping with AI-assisted reasoning. The goal is a production-quality knowledge application where users can build, connect, and explore ideas visually while an AI partner helps refine and extend their thinking.
 
 See [docs/PRODUCT_VISION.md](docs/PRODUCT_VISION.md) for the full vision.
 
@@ -35,7 +35,7 @@ See [docs/PRODUCT_VISION.md](docs/PRODUCT_VISION.md) for the full vision.
 lib/
 â”œâ”€â”€ main.dart              # Entry point
 â”œâ”€â”€ app/                   # Application infrastructure
-â”‚   â”œâ”€â”€ app.dart           # MindoraApp widget
+â”‚   â”œâ”€â”€ app.dart           # SeimaApp widget
 â”‚   â”œâ”€â”€ di.dart            # Dependency injection setup
 â”‚   â”œâ”€â”€ config/            # App configuration
 â”‚   â”œâ”€â”€ router/            # Route definitions

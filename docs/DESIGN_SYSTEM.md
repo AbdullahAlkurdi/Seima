@@ -1,13 +1,13 @@
 # Design System
 
 > **Status:** Implemented  
-> This document describes the actual design tokens and theme implementation as found in `lib/src/theme/`.
+> This document describes the actual design tokens and theme implementation as found in `lib/app/theme/`.
 
 ---
 
 ## Design Philosophy
 
-Mindora's visual design prioritizes clarity, focus, and calm. The interface should recede so the user's ideas take center stage. Design decisions favor:
+Seima's visual design prioritizes clarity, focus, and calm. The interface should recede so the user's ideas take center stage. Design decisions favor:
 
 - **Clarity** — Clean layouts, clear hierarchy, readable text.
 - **Calm** — Muted backgrounds, intentional whitespace, restrained use of color.
@@ -19,7 +19,7 @@ Mindora's visual design prioritizes clarity, focus, and calm. The interface shou
 1. **Content first** — Visual elements support the content, not compete with it.
 2. **Minimal chrome** — UI chrome (toolbars, panels) appears only when needed.
 3. **Progressive disclosure** — Complexity reveals itself gradually.
-4. **Platform appropriate** — Follow platform conventions while maintaining Mindora identity.
+4. **Platform appropriate** — Follow platform conventions while maintaining Seima identity.
 5. **Material 3 aligned** — Leverage Material 3 design language as the foundation.
 
 ## Brand Personality
@@ -191,8 +191,8 @@ Defined in `AppSpacing` as a set of static constants.
 
 ### Component Status
 
-- Components exist only as theme defaults. No custom Mindora widgets are implemented.
-- Custom component widgets (MindoraCard, MindoraButton, etc.) are planned for future phases.
+- Components exist only as theme defaults. No custom Seima widgets are implemented.
+- Custom component widgets (SeimaCard, SeimaButton, etc.) are planned for future phases.
 
 ---
 
@@ -210,20 +210,20 @@ Defined in `AppSpacing` as a set of static constants.
 
 ---
 
-## Mindora Icon
+## Seima Icon
 
-The Mindora brand icon (`assets/Mindora_Icon.png`) serves as the visual anchor:
+The Seima brand icon (`assets/Seima_Icon.png`) serves as the visual anchor:
 
 - **Source:** 1024×1024 RGBA PNG with transparency
-- **Usage:** App launcher icons on all platforms, native splash screen, Flutter startup animation, MindoraLoadingView component, AI panel loading states
+- **Usage:** App launcher icons on all platforms, native splash screen, Flutter startup animation, SeimaLoadingView component, AI panel loading states
 - **Treatment:** Always rendered at native resolution. Never distorted, recolored, or composited with gradients.
 
 ## Startup & Loading
 
-The startup and loading experience uses the Mindora icon with subtle animation:
+The startup and loading experience uses the Seima icon with subtle animation:
 
 - **StartupScreen:** Brief entry animation (scale 0.94→1.0, opacity fade) shown on app launch before transitioning to the main UI. Integrates via `MaterialApp.builder`.
-- **MindoraLoadingView:** Reusable component with three variants:
+- **SeimaLoadingView:** Reusable component with three variants:
   - `fullPage` — Scaffold wrapper for standalone loading screens
   - `compact` — Inline loading for panels and embedded areas
   - `overlay` — Semi-transparent overlay for modal loading

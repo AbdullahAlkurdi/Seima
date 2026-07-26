@@ -49,8 +49,8 @@ app.*.map.json
 .env.local
 .env.production
 
-# Mindora model storage (downloaded GGUF models are large binaries, not source)
-mindora_models/
+# Seima model storage (downloaded GGUF models are large binaries, not source)
+seima_models/
 
 # Model download artifacts
 *.gguf

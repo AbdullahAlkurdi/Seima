@@ -49,12 +49,12 @@
 - State management is functional with at least one demo Cubit
 - Navigation can route between pages
 - DI is configured for core services
-- Default counter page is replaced with placeholder Mindora page
+- Default counter page is replaced with placeholder Seima page
 - All tests pass
 
 ---
 
-## Phase 2 — Core Mindora Experience
+## Phase 2 — Core Experience
 
 **Status:** Complete ✓
 
@@ -159,7 +159,7 @@
 
 **Status:** Complete ✓
 
-**Objective:** Replace heuristic LocalAIService with a real on-device LLM while preserving Mindora's privacy-first architecture. Desktop platforms run llama.cpp via subprocess; mobile/web fall back to heuristic.
+**Objective:** Replace heuristic LocalAIService with a real on-device LLM while preserving Seima's privacy-first architecture. Desktop platforms run llama.cpp via subprocess; mobile/web fall back to heuristic.
 
 **Key Work:**
 - [x] Platform audit (Flutter 3.44.2, Dart 3.12.2, all 6 platforms configured)
@@ -246,5 +246,72 @@
 - Model downloads are resilient to interruption
 - All tests pass, 0 analyzer issues
 - Documentation is accurate
+
+---
+
+## Phase 9 — Sharing & Interoperability Foundation ✓
+
+**Status:** Complete
+
+**Objective:** Establish Seima's sharing and interoperability architecture as a first-class capability. Design canonical interchange format, build export/import pipelines, integrate platform share mechanisms, and provide safe import preview UX.
+
+**Key Work:**
+- [x] Canonical Seima knowledge format (`SeimaKnowledgePackage` with `schema: seima_knowledge`)
+- [x] Deterministic serialization with explicit schema identity and version field
+- [x] Forward-compatible parsing (unknown fields preserved, missing optionals defaulted)
+- [x] Export pipeline (`ExportService`): `.seima` file, clipboard copy, human-readable text
+- [x] Import pipeline (`ImportService`): canonical JSON, plain text, clipboard with auto-format detection
+- [x] Input format detection (`InputDetector`)
+- [x] Import preview with validation (source, title, node/connection count, warnings, errors)
+- [x] Import as new mind or merge into existing mind
+- [x] Prevent silent data overwrite (preview-first architecture)
+- [x] Android share intent receiving (`ACTION_SEND` text/plain, application/json)
+- [x] Kotlin `MainActivity` share handling via MethodChannel (`com.seima/sharing`)
+- [x] Share handler initialization at app startup
+- [x] Export page with per-mind export options (file, clipboard, text preview)
+- [x] Share button in mind workspace app bar
+- [x] Import/Export settings page rewritten with real navigation
+- [x] Import preview screen with validation, warnings, action buttons
+- [x] Import destination picker dialog
+- [x] Import summary card widget
+- [x] Architecture documentation: `docs/SHARING_INTEROPERABILITY_ARCHITECTURE.md`
+- [x] ADR-033: Canonical Seima Knowledge Interchange Format
+- [x] ADR-034: Import Pipeline with Preview-First Architecture
+- [x] Updated all existing documentation to reflect new capabilities
+- [x] New dependencies: `path_provider`, `share_plus`, `file_picker`
+
+**Dependencies:** Phase 2 (Mind domain models), Phase 6 (UI patterns)
+
+**Completion Criteria:**
+- Canonical format supports round-trip: Seima → export → import → Seima
+- Export preserves all mind content (nodes, connections, types, positions, timestamps)
+- Import shows preview before mutation
+- Import supports new mind creation and merge into existing
+- Invalid input produces user-friendly errors (not crashes)
+- Android share intent triggers import preview
+- All tests pass, 0 analyzer issues
+- Documentation is accurate
+
+---
+
+## Phase 10 — Sharing & Interoperability Expansion
+
+**Status:** Planned
+
+**Objective:** Extend sharing to more input/output formats and enhance platform integration.
+
+**Key Work:**
+- Markdown import (headers → nodes, lists → connections)
+- Markdown export
+- Image/PDF export (canvas screenshot)
+- Text selection export from mind workspace
+- iOS share/receive integration
+- File picker integration for `.seima` file import
+- Deep link support
+- URL content extraction adapter
+- XMind/FreeMind/OPML adapter support
+- AI-assisted import structuring
+
+**Dependencies:** Phase 9
 
 ---

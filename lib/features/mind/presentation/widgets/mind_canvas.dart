@@ -164,13 +164,15 @@ class _MindCanvasState extends State<MindCanvas> {
           size: Size(bounds.width, bounds.height),
           child: Stack(
             children: [
-              CustomPaint(
-                size: Size(bounds.width, bounds.height),
-                painter: ConnectionPainter(
-                  connections: widget.mind.connections,
-                  nodes: widget.mind.nodes,
-                  nodeIds: widget.mind.nodes.map((n) => n.id).toSet(),
-                  selectedConnectionId: widget.selectedConnectionId,
+              RepaintBoundary(
+                child: CustomPaint(
+                  size: Size(bounds.width, bounds.height),
+                  painter: ConnectionPainter(
+                    connections: widget.mind.connections,
+                    nodes: widget.mind.nodes,
+                    nodeIds: widget.mind.nodes.map((n) => n.id).toSet(),
+                    selectedConnectionId: widget.selectedConnectionId,
+                  ),
                 ),
               ),
               ...widget.mind.nodes
@@ -179,19 +181,22 @@ class _MindCanvasState extends State<MindCanvas> {
                     return Positioned(
                       left: node.x,
                       top: node.y,
-                      child: CanvasNodeWidget(
-                        node: node,
-                        isSelected: widget.selectedNodeIds.contains(node.id),
-                        isConnectionSource:
-                            node.id == widget.connectionSourceNodeId,
-                        onTap: () => widget.onNodeTap(node.id),
-                        onDoubleTap: () => widget.onNodeDoubleTap(node.id),
-                        onDelete: () => widget.onNodeDelete(node.id),
-                        onStartConnection: () =>
-                            widget.onStartConnection(node.id),
-                        onMove: (dx, dy) => widget.onNodeMove(node.id, dx, dy),
-                        onDragStart: widget.onNodeDragStart,
-                        onDragEnd: widget.onNodeDragEnd,
+                      child: RepaintBoundary(
+                        child: CanvasNodeWidget(
+                          node: node,
+                          isSelected: widget.selectedNodeIds.contains(node.id),
+                          isConnectionSource:
+                              node.id == widget.connectionSourceNodeId,
+                          onTap: () => widget.onNodeTap(node.id),
+                          onDoubleTap: () => widget.onNodeDoubleTap(node.id),
+                          onDelete: () => widget.onNodeDelete(node.id),
+                          onStartConnection: () =>
+                              widget.onStartConnection(node.id),
+                          onMove: (dx, dy) =>
+                              widget.onNodeMove(node.id, dx, dy),
+                          onDragStart: widget.onNodeDragStart,
+                          onDragEnd: widget.onNodeDragEnd,
+                        ),
                       ),
                     );
                   }),

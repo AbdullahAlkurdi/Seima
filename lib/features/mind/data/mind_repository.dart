@@ -108,6 +108,17 @@ class MindRepository {
     }
   }
 
+  Future<void> deleteAll() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final currentJson = prefs.getString(_mindsKey);
+      await prefs.setString(_backupMindsKey, currentJson ?? '[]');
+      await prefs.setString(_mindsKey, '[]');
+    } catch (e) {
+      throw AppException(message: 'Failed to clear all minds', originalError: e);
+    }
+  }
+
   Future<void> delete(String id) async {
     try {
       final prefs = await SharedPreferences.getInstance();
