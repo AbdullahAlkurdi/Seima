@@ -125,7 +125,6 @@ class AIModelManagementPage extends StatelessWidget {
               const SizedBox(height: AppSpacing.s),
               OutlinedButton.icon(
                 onPressed: () async {
-                  final context = context;
                   if (!context.mounted) return;
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(

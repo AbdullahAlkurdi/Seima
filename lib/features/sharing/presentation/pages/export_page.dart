@@ -58,11 +58,11 @@ class _ExportPageState extends State<ExportPage> {
     }
   }
 
-  Future<void> _shareFile(String path) async {
+  Future<void> _shareFile(String filePath) async {
     if (!mounted) return;
-    await Share.shareFiles(
-      [path],
-      text: 'Seima Export: ${Path.basename(path)}',
+    await Share.shareXFiles(
+      [XFile(filePath)],
+      text: 'Seima Export: ${path.basename(filePath)}',
     );
   }
 

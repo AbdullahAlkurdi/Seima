@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:seima/app/theme/app_theme.dart';
 import 'package:seima/app/theme/spacing.dart';
+import 'package:seima/features/mind/presentation/cubit/mind_library_cubit.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
